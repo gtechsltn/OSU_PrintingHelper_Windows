@@ -1,0 +1,4 @@
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\x64\Release\Renci.SshNet.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\x64\Release\Renci.SshNet.xml
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\x64\Release\Renci.SshNet.csprojResolveAssemblyReference.cache
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\x64\Release\Renci.SshNet.dll

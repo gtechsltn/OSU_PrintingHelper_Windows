@@ -1,0 +1,8 @@
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\bin\Debug\Net20\Newtonsoft.Json.xml
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\bin\Debug\Net20\Newtonsoft.Json.dll
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\bin\Debug\Net20\Newtonsoft.Json.pdb
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\bin\Debug\Net20\Newtonsoft.Json.dll.CodeAnalysisLog.xml
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\bin\Debug\Net20\Newtonsoft.Json.dll.lastcodeanalysissucceeded
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.Net20.csprojResolveAssemblyReference.cache
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.dll
+C:\Users\Hunter\Desktop\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.pdb

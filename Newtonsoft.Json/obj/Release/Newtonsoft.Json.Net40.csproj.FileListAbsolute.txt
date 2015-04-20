@@ -1,0 +1,7 @@
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Release\Net40\Newtonsoft.Json.xml
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Release\Net40\Newtonsoft.Json.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Release\Net40\Newtonsoft.Json.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Release\Net40\Newtonsoft.Json.dll.CodeAnalysisLog.xml
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Release\Net40\Newtonsoft.Json.dll.lastcodeanalysissucceeded
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\obj\Release\Newtonsoft.Json.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\obj\Release\Newtonsoft.Json.pdb

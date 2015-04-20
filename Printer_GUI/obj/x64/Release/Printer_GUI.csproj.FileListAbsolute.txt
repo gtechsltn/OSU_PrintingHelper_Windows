@@ -1,0 +1,15 @@
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x64\Release\Printer_GUI.exe.config
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.exe.config
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.exe
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x64\Printer_GUI.exe.config
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x64\Printer_GUI.exe
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x64\Printer_GUI.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.csprojResolveAssemblyReference.cache
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.AboutBox.resources
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.MainForm.resources
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.Properties.Resources.resources
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.UserCredentialsForm.resources
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.csproj.GenerateResource.Cache
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.exe
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\obj\x64\Release\Printer_GUI.pdb
