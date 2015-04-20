@@ -1,4 +1,5 @@
-# OSU Printing Application Windows Platform
+# OSU Printing Application
+#### Windows Platform
 
 This is a printing application for the Ohio State University.
 The intention of creating this application is to help CSE major student to 
@@ -7,9 +8,9 @@ it can support different majors, departments such as ECE.
 
 ### Supported Operating System
 
-Windows 7, x86 or x64
-Windows 8, x86 or x64
-Windows 10, x86 or x64
+Windows 7, x86 or x64</br>
+Windows 8, x86 or x64</br>
+Windows 10, x86 or x64</br>
 
 Sorry, *Windows XP* is **not** supported.
 
