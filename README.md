@@ -17,7 +17,7 @@ Sorry, *Windows XP* is **not** supported.
 *.Net Platform 4.0* is a the minimum version require for running this application.
 If you do not have it, please download it at [Microsoft official website](http://www.microsoft.com/en-us/download/details.aspx?id=42643).
 
-### version history
+### Version history
 
 0.0.1 Initial Release <br/>
 0.0.2 Add support to printing .doc, .docx files <br/>
