@@ -1,5 +1,5 @@
 # OSU Printing Application
-#### Windows Platform
+###<pre>                   for Windows Platform</pre>
 
 This is a printing application for the Ohio State University.
 The intention of creating this application is to help CSE major student to 
