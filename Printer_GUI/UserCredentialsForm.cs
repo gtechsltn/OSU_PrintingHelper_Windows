@@ -19,11 +19,7 @@ namespace Printer_GUI
             this.manager = manager;
             InitializeComponent();
             textBox_Password.PasswordChar = '*';
-        }
-
-        private void UserCredentials_CloseOnStart(object sender, EventArgs e)
-        {
-            this.Close();
+            comboBox_Department.SelectedIndex = 0;
         }
 
         private void button_StorePassword_Click(object sender, EventArgs e)

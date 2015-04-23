@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <server_info department="CSE">
-    <address>beta.cse.ohio-state.edu</address>
+    <address>gamma.cse.ohio-state.edu</address>
     <username></username>
     <password></password>
   </server_info>

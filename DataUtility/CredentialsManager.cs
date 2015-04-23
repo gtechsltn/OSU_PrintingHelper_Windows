@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
@@ -18,6 +19,12 @@ namespace DataUtility
         private const string c_iv = "V0hBVF9ET19ZT1VfV0FOVA==";
         private const string XML_SERVER_INFO_LOCATION = "//configuration/server_info";
 
+        private const string WEBSITE_DIRECTORY = "http://web.cse.ohio-state.edu/~zhante/";
+        private const string CONFIGRATION_FILE_NAME = "server_config.xml";
+        private const string DEPT_PRINTER_MAP = "printer_map.json";
+
+        private string DEPT_PRINTER_MAP_URL = Path.Combine(WEBSITE_DIRECTORY, DEPT_PRINTER_MAP);
+        private string CONFIGRATION_TEMPLATE_URL = Path.Combine(WEBSITE_DIRECTORY, CONFIGRATION_FILE_NAME);
         /*
          * Key:     department
          * Value:   (username, password) tuple
@@ -107,12 +114,34 @@ namespace DataUtility
             }
             return true;
         }
+        private void DownloadXmlDocument(string url, string path)
+        {
+            Debug.WriteLine(url + " " + path);
+            try
+            {
+                string xmlString = new WebClient().DownloadString(url);
+                System.IO.File.WriteAllText(path, xmlString);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         private XmlDocument LoadXmlDocument()
         {
+            Debug.WriteLine("loading..");
             XmlDocument doc = new XmlDocument();
             try
             {
-                doc.Load(this.credentialFilePath);
+                if (File.Exists(this.credentialFilePath))
+                {
+                    doc.Load(this.credentialFilePath);
+                }
+                else
+                {
+                    DownloadXmlDocument(CONFIGRATION_TEMPLATE_URL, this.credentialFilePath);
+                }
             }
             catch (FileNotFoundException)
             {

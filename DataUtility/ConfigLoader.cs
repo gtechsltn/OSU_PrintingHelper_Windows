@@ -36,9 +36,9 @@ namespace DataUtility
         public bool LoadConfig()
         {
             string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
-            return processXmlDocument(configPath) && processJSON(jsonUrl);
+            return ProcessXmlDocument(configPath) && ProcessJSON(jsonUrl);
         }
-        private bool processXmlDocument(string filepath)
+        private bool ProcessXmlDocument(string filepath)
         {
             XmlDocument doc = new XmlDocument();
             try
@@ -76,7 +76,7 @@ namespace DataUtility
             }
             return true;
         }
-        private bool processJSON(string url)
+        private bool ProcessJSON(string url)
         {
             try
             {

@@ -1,5 +1,4 @@
-# OSU Printing Application
-###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for Windows Platform
+# OSU Printing Application (Windows Platform)
 
 ### Introduction
 This is a printing application for the Ohio State University.
@@ -34,6 +33,7 @@ If you do not have it, please download it at [Microsoft official website](http:/
 
 0.0.1 Initial Release <br/>
 0.0.2 Add support to printing .doc, .docx files <br/>
+0.1.0 Change the way of getting server_config.xml <br/>
 
 ### Credit
 Author: Te Zhang <br/>

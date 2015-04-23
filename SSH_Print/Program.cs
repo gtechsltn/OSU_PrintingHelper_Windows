@@ -12,8 +12,11 @@ namespace SSH_Print
 {
     class Program
     {
-        const string CONFIGRATION_FILE_NAME = "server_config.xml";
-        const string DEPT_PRINTER_MAP_ADDRESS = "http://web.cse.ohio-state.edu/~zhante/printer_map.json";
+        private const string WEBSITE_DIRECTORY = "http://web.cse.ohio-state.edu/~zhante/";
+        private const string CONFIGRATION_FILE_NAME = "server_config.xml";
+
+        private static string DEPT_PRINTER_MAP_ADDRESS = Path.Combine(WEBSITE_DIRECTORY, "printer_map.json");
+        private static string CONFIGRATION_FILE_ADDRESS = Path.Combine(WEBSITE_DIRECTORY, CONFIGRATION_FILE_NAME);
         static void Main(string[] args)
         {
             if (args.Length != 2)
