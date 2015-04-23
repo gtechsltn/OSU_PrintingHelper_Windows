@@ -1,5 +1,5 @@
 # OSU Printing Application
-###！！！！for Windows Platform
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for Windows Platform
 
 ### Introduction
 This is a printing application for the Ohio State University.
