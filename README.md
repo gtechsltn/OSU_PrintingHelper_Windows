@@ -8,14 +8,13 @@ it can support different majors, departments such as ECE.
 
 ### Installation steps
 1. Run Printer_GUI.exe as **administator**.
-2. Click "Load Printer" on the menu bar to load all the printers.
-3. Click the checkboxs for all the printers that you would like to load.
-4. Click "Apply" in the bottom.
-5. Click on the "Account Info" on the menu bar to enter your account info for a department.
-6. Click on save to save your username and password.
-7. After you've done all the instructions from 1 to 6, right click on any file you want to print.
-8. Select "OSU Printers" in the right click menu and choose the printer loaded in step 3.
-9. Enjoy!
+2. Click the checkboxs for all the printers that you would like to load.
+3. Click "Apply" in the bottom.
+4. Click on the "Credentials" on the menu bar to enter your account info for a department.
+5. Click on save to save your username and password.
+6. After you've done all the instructions from step 1 to 5, right click on any file you want to print.
+7. Select "OSU Printers" in the right click menu and choose the printer to print.
+8. Enjoy!
 
 ### Supported Operating System
 
@@ -34,6 +33,7 @@ If you do not have it, please download it at [Microsoft official website](http:/
 0.0.1 Initial Release <br/>
 0.0.2 Add support to printing .doc, .docx files <br/>
 0.1.0 Change the way of getting server_config.xml <br/>
+0.2.0 Update the UI to the newest metro style. <br/>
 
 ### Credit
 Author: Te Zhang <br/>

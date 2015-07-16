@@ -5,28 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Renci.SshNet;
-using Newtonsoft.Json;
+using Utility;
 
 namespace SSH_Print
 {
     class NetworkHandler
     {
-        const string TEMP_PRINT_DIRECTORY = "temp_print";
-        const int SFTP_PORT = 22;
-        string[] SUPPORTED_CONVERTING_TO_PDF_EXTENSION = {".doc", ".docx", ".xls", ".xlsx"};
-
         string address;
         string username;
         string password;
+
+        List<string> CommandsList;
+
         public NetworkHandler(string address, string username, string password)
         {
             this.address = address;
             this.username = username;
             this.password = password;
+            CommandsList = new List<string>();
         }
-        public bool uploadFile(string filePath)
+        public bool UploadFile(string filePath)
         {
-            ConnectionInfo connectionInfo = new PasswordConnectionInfo(address, SFTP_PORT, username, password);
+            ConnectionInfo connectionInfo = new PasswordConnectionInfo(address, ConstFields.SFTP_PORT, username, password);
             try
             {
                 using (var sftp = new SftpClient(connectionInfo))
@@ -34,11 +34,11 @@ namespace SSH_Print
                     sftp.Connect();
                     using (var file = File.OpenRead(filePath))
                     {
-                        if (!sftp.Exists(TEMP_PRINT_DIRECTORY))
+                        if (!sftp.Exists(ConstFields.TEMP_PRINT_DIRECTORY))
                         {
-                            sftp.CreateDirectory(TEMP_PRINT_DIRECTORY);
+                            sftp.CreateDirectory(ConstFields.TEMP_PRINT_DIRECTORY);
                         }
-                        sftp.ChangeDirectory(TEMP_PRINT_DIRECTORY);
+                        sftp.ChangeDirectory(ConstFields.TEMP_PRINT_DIRECTORY);
                         string filename = Path.GetFileName(filePath);
                         sftp.UploadFile(file, filename);
                     }
@@ -67,49 +67,38 @@ namespace SSH_Print
             }
             return true;
         }
-        string getFileNameAsPdf(string fileName)
+        public void PrintFile(string FileName, string PrinterName)
         {
-            string nameWithoutExtentsion = Path.GetFileNameWithoutExtension(fileName);
-            return nameWithoutExtentsion + ".pdf";           
-        }
-        Tuple<string, string> getChangeFileFormatCommand(string fileName)
-        {
-            string extension = Path.GetExtension(fileName).ToLower();
-            string convertCommand =  @"soffice --headless --convert-to pdf ""{0}""; ";
-            string removeCommand = @"rm -f ""{0}""";
+            string changeDirectoryCommand = @"cd " + ConstFields.TEMP_PRINT_DIRECTORY;
+            CommandsList.Add(changeDirectoryCommand);
 
-            if (SUPPORTED_CONVERTING_TO_PDF_EXTENSION.Contains(extension))
+            List<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(FileName);
+            foreach (string command in ConvertCommandList)
             {
-                convertCommand = String.Format(convertCommand, fileName);
-                removeCommand = String.Format(removeCommand, getFileNameAsPdf(fileName));
-                return new Tuple<string, string>(convertCommand, removeCommand);
+                CommandsList.Add(command);
             }
-            return new Tuple<string, string>("", "");
-        }
-        public void printFile(string fileName, string printerName)
-        {
-            string changeDirectoryCommand = @"cd temp_print; ";
-            string removeFileCommand = String.Format(@"rm -f ""{0}""; ", fileName);
-            Tuple<string, string> tuple = getChangeFileFormatCommand(fileName);
-            string convertPdfCommand = tuple.Item1;
-            string removePdfCommand = tuple.Item2;
-            string generalNanme = fileName;
+            string GeneralName = FileName;
+            if (ConvertCommandList.Capacity > 0)
+            {
+                GeneralName = FileFormatConverter.GetFileNameAsPdf(FileName);
+            }
+            string PrintingCommand = String.Format(@"lp -d {0} ""{1}""", PrinterName, GeneralName);
+            ConfigLoader Loader = new ConfigLoader(ConstFields.CONFIGRATION_FILE_NAME, "");
+            PrintingCommand += (" " + string.Join(" ", Loader.GetEnabledPrintingOptions()));
+            CommandsList.Add(PrintingCommand);
 
-            if (convertPdfCommand != "")
-            {
-                generalNanme = getFileNameAsPdf(fileName);
-            }
-            string printingCommand = String.Format(@"lp -d {0} ""{1}""; ", printerName, generalNanme);
+            string removeFileCommand = String.Format(@"rm -f ""{0}""", FileName);
+            CommandsList.Add(removeFileCommand);
 
             try
             {
                 using (var client = new SshClient(address, username, password))
                 {
                     client.Connect();
-                    string commmand = changeDirectoryCommand + convertPdfCommand
-                        + printingCommand + removeFileCommand + removePdfCommand;
-
+                    string commmand = string.Join("; ", CommandsList);
                     SshCommand result = client.RunCommand(commmand);
+                    CommandsList.Clear();
+                    Console.WriteLine(commmand);
                     Console.WriteLine(result.Result);
                     client.Disconnect();
                 }

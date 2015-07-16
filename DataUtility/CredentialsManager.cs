@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 
-namespace DataUtility
+namespace Utility
 {
     public class CredentialsManager
     {
@@ -18,13 +18,6 @@ namespace DataUtility
         private const string c_key = "SEVMTE9fV09STEQ=";
         private const string c_iv = "V0hBVF9ET19ZT1VfV0FOVA==";
         private const string XML_SERVER_INFO_LOCATION = "//configuration/server_info";
-
-        private const string WEBSITE_DIRECTORY = "http://web.cse.ohio-state.edu/~zhante/";
-        private const string CONFIGRATION_FILE_NAME = "server_config.xml";
-        private const string DEPT_PRINTER_MAP = "printer_map.json";
-
-        private string DEPT_PRINTER_MAP_URL = Path.Combine(WEBSITE_DIRECTORY, DEPT_PRINTER_MAP);
-        private string CONFIGRATION_TEMPLATE_URL = Path.Combine(WEBSITE_DIRECTORY, CONFIGRATION_FILE_NAME);
         /*
          * Key:     department
          * Value:   (username, password) tuple
@@ -140,7 +133,7 @@ namespace DataUtility
                 }
                 else
                 {
-                    DownloadXmlDocument(CONFIGRATION_TEMPLATE_URL, this.credentialFilePath);
+                    DownloadXmlDocument(ConstFields.CONFIGRATION_FILE_URL, this.credentialFilePath);
                 }
             }
             catch (FileNotFoundException)

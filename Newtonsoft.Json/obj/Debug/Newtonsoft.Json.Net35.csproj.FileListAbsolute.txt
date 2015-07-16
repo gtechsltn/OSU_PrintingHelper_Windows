@@ -1,8 +1,0 @@
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll.CodeAnalysisLog.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll.lastcodeanalysissucceeded
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.Net35.csprojResolveAssemblyReference.cache
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.pdb

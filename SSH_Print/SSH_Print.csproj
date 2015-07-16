@@ -88,6 +88,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2013.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2013.4.7\lib\net40\Renci.SshNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -96,25 +104,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileFormatConverter.cs" />
     <Compile Include="NetworkHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataUtility\DataUtility.csproj">
+    <ProjectReference Include="..\DataUtility\Utility.csproj">
       <Project>{c7f09f8b-d6d0-4ac6-85a1-8bca416a1b74}</Project>
-      <Name>DataUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
-      <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
-      <Name>Newtonsoft.Json.Net40</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Renci.SshNet\Renci.SshNet.csproj">
-      <Project>{2f5f8c90-0bd1-424f-997c-7bc6280919d1}</Project>
-      <Name>Renci.SshNet</Name>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

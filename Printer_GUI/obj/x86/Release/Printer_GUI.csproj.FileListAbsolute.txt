@@ -1,15 +1,3 @@
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\Release\Printer_GUI.exe.config
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Printer_GUI.exe
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Printer_GUI.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\DataUtility.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Newtonsoft.Json.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Renci.SshNet.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\SSH_Print.exe
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\DataUtility.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Newtonsoft.Json.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Newtonsoft.Json.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\Renci.SshNet.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Printer_GUI\bin\x86\release\SSH_Print.pdb
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.exe.config
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.exe
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Build\x86\Printer_GUI.pdb

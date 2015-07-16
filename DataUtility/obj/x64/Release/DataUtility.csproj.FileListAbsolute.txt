@@ -1,3 +1,4 @@
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x64\Release\DataUtility.dll.config
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x64\Release\DataUtility.dll
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x64\Release\DataUtility.pdb
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x64\Release\Newtonsoft.Json.dll

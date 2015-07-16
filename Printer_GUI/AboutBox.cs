@@ -6,10 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace Printer_GUI
 {
-    partial class AboutBox : Form
+    partial class AboutBox : MetroForm
     {
         public AboutBox()
         {

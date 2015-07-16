@@ -28,108 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button_ApplyChange = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.loadPrinterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uninstallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usernamePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new MetroFramework.Controls.MetroGrid();
             this.PrinterLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrinterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrinterType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loaded = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.menuStrip1.SuspendLayout();
+            this.button_Options = new System.Windows.Forms.Button();
+            this.button_About = new System.Windows.Forms.Button();
+            this.button_Uninstall = new System.Windows.Forms.Button();
+            this.button_Credentials = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // button_ApplyChange
             // 
             this.button_ApplyChange.Enabled = false;
-            this.button_ApplyChange.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ApplyChange.Location = new System.Drawing.Point(562, 355);
+            this.button_ApplyChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ApplyChange.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ApplyChange.Location = new System.Drawing.Point(556, 367);
             this.button_ApplyChange.Name = "button_ApplyChange";
-            this.button_ApplyChange.Size = new System.Drawing.Size(75, 23);
+            this.button_ApplyChange.Size = new System.Drawing.Size(84, 30);
             this.button_ApplyChange.TabIndex = 0;
             this.button_ApplyChange.Text = "Apply";
             this.button_ApplyChange.UseVisualStyleBackColor = true;
-            this.button_ApplyChange.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadPrinterToolStripMenuItem,
-            this.uninstallToolStripMenuItem,
-            this.usernamePasswordToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(649, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // loadPrinterToolStripMenuItem
-            // 
-            this.loadPrinterToolStripMenuItem.Name = "loadPrinterToolStripMenuItem";
-            this.loadPrinterToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.loadPrinterToolStripMenuItem.Text = "Load Printer";
-            this.loadPrinterToolStripMenuItem.Click += new System.EventHandler(this.loadPrinterToolStripMenuItem_Click);
-            // 
-            // uninstallToolStripMenuItem
-            // 
-            this.uninstallToolStripMenuItem.Name = "uninstallToolStripMenuItem";
-            this.uninstallToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.uninstallToolStripMenuItem.Text = "Uninstall";
-            this.uninstallToolStripMenuItem.Click += new System.EventHandler(this.uninstallToolStripMenuItem_Click);
-            // 
-            // usernamePasswordToolStripMenuItem
-            // 
-            this.usernamePasswordToolStripMenuItem.Name = "usernamePasswordToolStripMenuItem";
-            this.usernamePasswordToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            this.usernamePasswordToolStripMenuItem.Text = "Account Info";
-            this.usernamePasswordToolStripMenuItem.Click += new System.EventHandler(this.usernamePasswordToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.button_ApplyChange.Click += new System.EventHandler(this.button_ApplyChange_Click);
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PrinterLocation,
             this.PrinterName,
             this.PrinterType,
             this.Loaded});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView.Location = new System.Drawing.Point(12, 27);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView.EnableHeadersVisualStyles = false;
+            this.dataGridView.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView.Location = new System.Drawing.Point(13, 85);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(625, 322);
+            this.dataGridView.Size = new System.Drawing.Size(637, 276);
             this.dataGridView.TabIndex = 2;
             // 
             // PrinterLocation
@@ -155,42 +133,89 @@
             this.Loaded.HeaderText = "Loaded";
             this.Loaded.Name = "Loaded";
             // 
+            // button_Options
+            // 
+            this.button_Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Options.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Options.Location = new System.Drawing.Point(202, 27);
+            this.button_Options.Name = "button_Options";
+            this.button_Options.Size = new System.Drawing.Size(87, 30);
+            this.button_Options.TabIndex = 3;
+            this.button_Options.Text = "Options";
+            this.button_Options.UseVisualStyleBackColor = true;
+            this.button_Options.Click += new System.EventHandler(this.button_Options_Click);
+            // 
+            // button_About
+            // 
+            this.button_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_About.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_About.Location = new System.Drawing.Point(436, 27);
+            this.button_About.Name = "button_About";
+            this.button_About.Size = new System.Drawing.Size(87, 30);
+            this.button_About.TabIndex = 4;
+            this.button_About.Text = "About";
+            this.button_About.UseVisualStyleBackColor = true;
+            this.button_About.Click += new System.EventHandler(this.button_About_Click);
+            // 
+            // button_Uninstall
+            // 
+            this.button_Uninstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Uninstall.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Uninstall.Location = new System.Drawing.Point(553, 27);
+            this.button_Uninstall.Name = "button_Uninstall";
+            this.button_Uninstall.Size = new System.Drawing.Size(87, 30);
+            this.button_Uninstall.TabIndex = 5;
+            this.button_Uninstall.Text = "Uninstall";
+            this.button_Uninstall.UseVisualStyleBackColor = true;
+            this.button_Uninstall.Click += new System.EventHandler(this.button_Uninstall_Click);
+            // 
+            // button_Credentials
+            // 
+            this.button_Credentials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Credentials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Credentials.Location = new System.Drawing.Point(318, 27);
+            this.button_Credentials.Name = "button_Credentials";
+            this.button_Credentials.Size = new System.Drawing.Size(87, 30);
+            this.button_Credentials.TabIndex = 6;
+            this.button_Credentials.Text = "Credentials";
+            this.button_Credentials.UseVisualStyleBackColor = true;
+            this.button_Credentials.Click += new System.EventHandler(this.button_Credentials_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 390);
+            this.ClientSize = new System.Drawing.Size(663, 412);
+            this.Controls.Add(this.button_Credentials);
+            this.Controls.Add(this.button_Uninstall);
+            this.Controls.Add(this.button_About);
+            this.Controls.Add(this.button_Options);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.button_ApplyChange);
-            this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MainMenuStrip = this.menuStrip1;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Printer GUI";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private MetroFramework.Controls.MetroGrid dataGridView;
+
         private System.Windows.Forms.Button button_ApplyChange;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem loadPrinterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem uninstallToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrinterLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrinterName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrinterType;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Loaded;
-        private System.Windows.Forms.ToolStripMenuItem usernamePasswordToolStripMenuItem;
+        private System.Windows.Forms.Button button_Options;
+        private System.Windows.Forms.Button button_About;
+        private System.Windows.Forms.Button button_Uninstall;
+        private System.Windows.Forms.Button button_Credentials;
     }
 }
 

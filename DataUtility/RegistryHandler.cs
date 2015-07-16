@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Utility;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Printer_GUI
+namespace Utility
 {
     public class RegistryHandler
     {
@@ -17,7 +18,6 @@ namespace Printer_GUI
         string baseShell;
 
         const string commandTemplate = "\"{0}\" \"%1\" {1}";
-        const string sshPrintFileName = "SSH_Print.exe";
         public RegistryHandler(string baseRegistry)
         {
             this.baseReg = baseRegistry;
@@ -69,7 +69,7 @@ namespace Printer_GUI
                     subkey.SetValue("", name);
                     RegistryKey subkeyCommand = subkey.CreateSubKey("command", RegistryKeyPermissionCheck.ReadWriteSubTree);
 
-                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), sshPrintFileName);
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(), ConstFields.SSH_PRINT_FILE_NAME);
                     string command = String.Format(commandTemplate, filePath, name);
                     subkeyCommand.SetValue("", command);
                 }

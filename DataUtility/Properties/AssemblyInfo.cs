@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DataUtility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Ohio State University")]
 [assembly: AssemblyProduct("DataUtility")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
+[assembly: AssemblyCopyright("Copyright © Dept.CSE @ Ohio State University")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -5,18 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Renci.SshNet;
-using Newtonsoft.Json;
-using DataUtility;
+using Utility;
 
 namespace SSH_Print
 {
     class Program
     {
-        private const string WEBSITE_DIRECTORY = "http://web.cse.ohio-state.edu/~zhante/";
-        private const string CONFIGRATION_FILE_NAME = "server_config.xml";
-
-        private static string DEPT_PRINTER_MAP_ADDRESS = Path.Combine(WEBSITE_DIRECTORY, "printer_map.json");
-        private static string CONFIGRATION_FILE_ADDRESS = Path.Combine(WEBSITE_DIRECTORY, CONFIGRATION_FILE_NAME);
         static void Main(string[] args)
         {
             if (args.Length != 2)
@@ -25,33 +19,42 @@ namespace SSH_Print
                 System.Console.ReadLine();
                 return;
             }
-            string filePath = args[0];
-            string printerName = args[1];
+            string FilePath = args[0];
+            string PrinterName = args[1];
 
-            ConfigLoader loader = new ConfigLoader(CONFIGRATION_FILE_NAME, DEPT_PRINTER_MAP_ADDRESS);
-            if (!loader.LoadConfig())
+            ConfigLoader Loader = new ConfigLoader(ConstFields.CONFIGRATION_FILE_NAME,
+                ConstFields.PRINTER_MAP_URL);
+            if (!Loader.LoadConfig())
             {
                 return;
             }
-            string[] config = loader.GetConfig(printerName);
+            string[] Config = Loader.GetServerConfig(PrinterName);
 
-            if (config == null)
+            if (Config == null)
             {
-                Console.WriteLine("Cannot find the correspoding department of printer: " + printerName);
+                Console.WriteLine("Cannot find the correspoding department of printer: " + PrinterName);
                 Console.ReadLine();
                 return;
             }
+            if (Config[1].Length == 0 || Config[2].Length == 0)
+            {
+                Console.WriteLine("Username or password not found.");
+                Console.ReadLine();
+                return;
+            }
+
             Console.WriteLine("Uploading file, please wait...");
-            NetworkHandler handler = new NetworkHandler(config[0], config[1], config[2]);
-            if (!handler.uploadFile(filePath))
+            NetworkHandler Handler = new NetworkHandler(Config[0], Config[1], Config[2]);
+
+            if (!Handler.UploadFile(FilePath))
             {
                 Console.WriteLine("Fail to upload file to the server");
                 Console.ReadLine();
                 return;
             }
             Console.WriteLine("Printing file, please wait...");
-            string fileName = Path.GetFileName(filePath);
-            handler.printFile(fileName, printerName);
+            string FileName = Path.GetFileName(FilePath);
+            Handler.PrintFile(FileName, PrinterName);
         }
     }
 }

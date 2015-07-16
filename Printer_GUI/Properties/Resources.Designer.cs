@@ -59,5 +59,15 @@ namespace Printer_GUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Printer {
+            get {
+                object obj = ResourceManager.GetObject("Printer", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

@@ -1,4 +1,3 @@
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\obj\x86\Debug\SSH_Print.csprojResolveAssemblyReference.cache
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\SSH_Print.exe.config
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\SSH_Print.exe
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\SSH_Print.pdb
@@ -6,9 +5,8 @@ C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Newtonsoft.Json.dll
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Renci.SshNet.dll
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\DataUtility.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Newtonsoft.Json.pdb
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Newtonsoft.Json.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Renci.SshNet.pdb
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\bin\x86\Debug\Renci.SshNet.xml
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\obj\x86\Debug\SSH_Print.csprojResolveAssemblyReference.cache
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\obj\x86\Debug\SSH_Print.exe
 C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\SSH_Print\obj\x86\Debug\SSH_Print.pdb

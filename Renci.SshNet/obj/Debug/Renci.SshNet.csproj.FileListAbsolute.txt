@@ -1,6 +1,0 @@
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\Debug\Renci.SshNet.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\Debug\Renci.SshNet.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\Debug\Renci.SshNet.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\Debug\Renci.SshNet.csprojResolveAssemblyReference.cache
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\Debug\Renci.SshNet.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\Debug\Renci.SshNet.pdb

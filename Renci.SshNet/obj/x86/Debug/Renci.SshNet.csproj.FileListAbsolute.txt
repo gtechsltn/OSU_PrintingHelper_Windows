@@ -1,5 +1,0 @@
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\x86\Debug\Renci.SshNet.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\x86\Debug\Renci.SshNet.pdb
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\bin\x86\Debug\Renci.SshNet.xml
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\x86\Debug\Renci.SshNet.dll
-C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\Renci.SshNet\obj\x86\Debug\Renci.SshNet.pdb

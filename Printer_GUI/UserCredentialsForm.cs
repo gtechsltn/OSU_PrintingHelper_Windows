@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows;
-using DataUtility;
+using Utility;
+using MetroFramework.Forms;
+using MetroFramework;
 
 namespace Printer_GUI
 {
-    public partial class UserCredentialsForm : Form
+    public partial class UserCredentialsForm : MetroForm
     {
         private CredentialsManager manager;
         public UserCredentialsForm(CredentialsManager manager)
@@ -30,11 +32,11 @@ namespace Printer_GUI
 
             if (manager.StoreCredentials(department, username, password))
             {
-                MessageBox.Show("Your username and password is stored securely!");
+                MetroMessageBox.Show(this, "Your username and password is stored securely!");
             }
             else
             {
-                MessageBox.Show("Fail to store your username and password.");
+                MetroMessageBox.Show(this, "Fail to store your username and password.");
             }
         }
 
