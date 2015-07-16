@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <server_info department="CSE">
+    <address>gamma.cse.ohio-state.edu</address>
+    <username>wanjian</username>
+    <password>qu2X2HN47c4VI5WiZCHkKGTr1mVwOE2z</password>
+  </server_info>
+  <server_info department="ECE">
+    <address>rh026.ece.ohio-state.edu</address>
+    <username>zhangt</username>
+    <password>OgHRnnzE2JGJJvucRPryvXi7M2EZ54Wt</password>
+  </server_info>
+  <printing_options>
+    <option name="Double Side" enabled="true">-o sides=two-sided-long-edge</option>
+    <option name="Hello World" enabled="false">-o hello=world</option>
+    <option name="Hello Bob" enabled="false">-o hello=bob</option>
+  </printing_options>
+</configuration>

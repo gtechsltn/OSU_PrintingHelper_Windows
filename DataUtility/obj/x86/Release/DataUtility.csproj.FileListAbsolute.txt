@@ -1,0 +1,9 @@
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\DataUtility.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\DataUtility.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\Newtonsoft.Json.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\Newtonsoft.Json.xml
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\obj\x86\Release\DataUtility.csprojResolveAssemblyReference.cache
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\obj\x86\Release\DataUtility.dll
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\obj\x86\Release\DataUtility.pdb
+C:\Users\Hunter\Documents\Visual Studio 2013\Projects\OSU_Printing_App\DataUtility\bin\x86\Release\DataUtility.dll.config
