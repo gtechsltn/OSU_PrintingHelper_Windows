@@ -16,15 +16,15 @@ namespace Printer_GUI
 {
     public partial class PrintingOptionsForm : MetroForm
     {
-        ConfigLoader Loader;
-        const string FailingSaved = "A Problem was encoutered while saving.\n"
+        ConfigManager Loader;
+        const string FAILING_SAVED_STRING = "A Problem was encoutered while saving.\n"
             + "Please make sure the configuration file is readable and writable";
-        const string SuccessfulSaved = "Options saved successufully!";
+        const string SUCCESSFUL_SAVED_STRING = "Options saved successufully!";
         public PrintingOptionsForm()
         {
             InitializeComponent();
 
-            Loader = new ConfigLoader(ConstFields.CONFIGRATION_FILE_NAME);
+            Loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
             foreach (Tuple<string, bool> command in Loader.GetAllPrintingOptions())
             {
                 this.checkedListBox_PrintingOptions.Items.Add(command.Item1);
@@ -40,10 +40,10 @@ namespace Printer_GUI
             {
                 CheckedOptions.Add(Item.ToString());
             }
-            string Message = SuccessfulSaved;
-            if (!Loader.SetEnabledPrintingOptions(CheckedOptions))
+            string Message = SUCCESSFUL_SAVED_STRING;
+            if (!Loader.SaveEnabledPrintingOptions(CheckedOptions))
             {
-                Message = FailingSaved;
+                Message = FAILING_SAVED_STRING;
             }
             MetroMessageBox.Show(this, Message);
         }

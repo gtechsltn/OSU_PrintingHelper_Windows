@@ -43,6 +43,7 @@
             this.button_About = new System.Windows.Forms.Button();
             this.button_Uninstall = new System.Windows.Forms.Button();
             this.button_Credentials = new System.Windows.Forms.Button();
+            this.button_Install = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,9 +138,9 @@
             // 
             this.button_Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Options.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Options.Location = new System.Drawing.Point(202, 27);
+            this.button_Options.Location = new System.Drawing.Point(240, 27);
             this.button_Options.Name = "button_Options";
-            this.button_Options.Size = new System.Drawing.Size(87, 30);
+            this.button_Options.Size = new System.Drawing.Size(77, 30);
             this.button_Options.TabIndex = 3;
             this.button_Options.Text = "Options";
             this.button_Options.UseVisualStyleBackColor = true;
@@ -149,9 +150,9 @@
             // 
             this.button_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_About.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_About.Location = new System.Drawing.Point(436, 27);
+            this.button_About.Location = new System.Drawing.Point(464, 27);
             this.button_About.Name = "button_About";
-            this.button_About.Size = new System.Drawing.Size(87, 30);
+            this.button_About.Size = new System.Drawing.Size(77, 30);
             this.button_About.TabIndex = 4;
             this.button_About.Text = "About";
             this.button_About.UseVisualStyleBackColor = true;
@@ -161,9 +162,9 @@
             // 
             this.button_Uninstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Uninstall.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Uninstall.Location = new System.Drawing.Point(553, 27);
+            this.button_Uninstall.Location = new System.Drawing.Point(573, 27);
             this.button_Uninstall.Name = "button_Uninstall";
-            this.button_Uninstall.Size = new System.Drawing.Size(87, 30);
+            this.button_Uninstall.Size = new System.Drawing.Size(77, 30);
             this.button_Uninstall.TabIndex = 5;
             this.button_Uninstall.Text = "Uninstall";
             this.button_Uninstall.UseVisualStyleBackColor = true;
@@ -173,19 +174,32 @@
             // 
             this.button_Credentials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Credentials.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Credentials.Location = new System.Drawing.Point(318, 27);
+            this.button_Credentials.Location = new System.Drawing.Point(350, 27);
             this.button_Credentials.Name = "button_Credentials";
-            this.button_Credentials.Size = new System.Drawing.Size(87, 30);
+            this.button_Credentials.Size = new System.Drawing.Size(77, 30);
             this.button_Credentials.TabIndex = 6;
             this.button_Credentials.Text = "Credentials";
             this.button_Credentials.UseVisualStyleBackColor = true;
             this.button_Credentials.Click += new System.EventHandler(this.button_Credentials_Click);
+            // 
+            // button_Install
+            // 
+            this.button_Install.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_Install.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Install.Location = new System.Drawing.Point(13, 367);
+            this.button_Install.Name = "button_Install";
+            this.button_Install.Size = new System.Drawing.Size(75, 30);
+            this.button_Install.TabIndex = 7;
+            this.button_Install.Text = "Install";
+            this.button_Install.UseVisualStyleBackColor = true;
+            this.button_Install.Click += new System.EventHandler(this.button_Install_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 412);
+            this.Controls.Add(this.button_Install);
             this.Controls.Add(this.button_Credentials);
             this.Controls.Add(this.button_Uninstall);
             this.Controls.Add(this.button_About);
@@ -216,6 +230,7 @@
         private System.Windows.Forms.Button button_About;
         private System.Windows.Forms.Button button_Uninstall;
         private System.Windows.Forms.Button button_Credentials;
+        private System.Windows.Forms.Button button_Install;
     }
 }
 

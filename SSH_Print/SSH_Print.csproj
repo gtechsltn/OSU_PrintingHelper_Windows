@@ -104,6 +104,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="FileFormatConverter.cs" />
     <Compile Include="NetworkHandler.cs" />
     <Compile Include="Program.cs" />
@@ -114,7 +117,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataUtility\Utility.csproj">
+    <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{c7f09f8b-d6d0-4ac6-85a1-8bca416a1b74}</Project>
       <Name>Utility</Name>
     </ProjectReference>

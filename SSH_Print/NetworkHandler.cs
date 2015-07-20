@@ -15,7 +15,7 @@ namespace SSH_Print
         string username;
         string password;
 
-        List<string> CommandsList;
+        IList<string> CommandsList;
 
         public NetworkHandler(string address, string username, string password)
         {
@@ -72,18 +72,18 @@ namespace SSH_Print
             string changeDirectoryCommand = @"cd " + ConstFields.TEMP_PRINT_DIRECTORY;
             CommandsList.Add(changeDirectoryCommand);
 
-            List<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(FileName);
+            IList<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(FileName);
             foreach (string command in ConvertCommandList)
             {
                 CommandsList.Add(command);
             }
             string GeneralName = FileName;
-            if (ConvertCommandList.Capacity > 0)
+            if (ConvertCommandList.Count > 0)
             {
                 GeneralName = FileFormatConverter.GetFileNameAsPdf(FileName);
             }
             string PrintingCommand = String.Format(@"lp -d {0} ""{1}""", PrinterName, GeneralName);
-            ConfigLoader Loader = new ConfigLoader(ConstFields.CONFIGRATION_FILE_NAME, "");
+            ConfigManager Loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
             PrintingCommand += (" " + string.Join(" ", Loader.GetEnabledPrintingOptions()));
             CommandsList.Add(PrintingCommand);
 

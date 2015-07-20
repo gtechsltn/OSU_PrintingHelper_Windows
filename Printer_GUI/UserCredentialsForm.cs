@@ -15,8 +15,10 @@ namespace Printer_GUI
 {
     public partial class UserCredentialsForm : MetroForm
     {
-        private CredentialsManager manager;
-        public UserCredentialsForm(CredentialsManager manager)
+        private const string SUCCESSFUL_SAVING_MESSAGE = "Your username and password is stored securely!";
+        private const string UNSUCCESSFUL_SAVING_MESSAGE = "Fail to store your username and password.";
+        private ConfigManager manager;
+        public UserCredentialsForm(ConfigManager manager)
         {
             this.manager = manager;
             InitializeComponent();
@@ -30,13 +32,13 @@ namespace Printer_GUI
             string username = textBox_Username.Text;
             string password = textBox_Password.Text;
 
-            if (manager.StoreCredentials(department, username, password))
+            if (manager.SaveCredentials(department, username, password))
             {
-                MetroMessageBox.Show(this, "Your username and password is stored securely!");
+                MetroMessageBox.Show(this, SUCCESSFUL_SAVING_MESSAGE);
             }
             else
             {
-                MetroMessageBox.Show(this, "Fail to store your username and password.");
+                MetroMessageBox.Show(this, UNSUCCESSFUL_SAVING_MESSAGE);
             }
         }
 

@@ -16,7 +16,12 @@ namespace Printer_GUI
         {
             InitializeComponent();
         }
-
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+            this.labelCompanyName.Text = String.Format(this.labelCompanyName.Text, AssemblyCompany);
+            this.labelCopyright.Text = String.Format(this.labelCopyright.Text, AssemblyCopyright);
+            this.labelVersion.Text = String.Format(this.labelVersion.Text, AssemblyVersion);
+        }
         #region Assembly Attribute Accessors
 
         public string AssemblyTitle

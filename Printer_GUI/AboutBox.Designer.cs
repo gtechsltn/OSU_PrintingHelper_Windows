@@ -78,7 +78,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(256, 29);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "Version: 0.2.0";
+            this.labelVersion.Text = "Version: {0}";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCopyright
@@ -91,7 +91,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(256, 29);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright: Te Zhang";
+            this.labelCopyright.Text = "Copyright: {0}";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName
@@ -103,7 +103,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(256, 29);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "Organization: OSU CSE Department";
+            this.labelCompanyName.Text = "Organization: {0}";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // okButton
@@ -132,6 +132,7 @@
             this.ShowInTaskbar = false;
             this.Text = "About This App";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.AboutBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

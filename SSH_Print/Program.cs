@@ -22,12 +22,7 @@ namespace SSH_Print
             string FilePath = args[0];
             string PrinterName = args[1];
 
-            ConfigLoader Loader = new ConfigLoader(ConstFields.CONFIGRATION_FILE_NAME,
-                ConstFields.PRINTER_MAP_URL);
-            if (!Loader.LoadConfig())
-            {
-                return;
-            }
+            ConfigManager Loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
             string[] Config = Loader.GetServerConfig(PrinterName);
 
             if (Config == null)

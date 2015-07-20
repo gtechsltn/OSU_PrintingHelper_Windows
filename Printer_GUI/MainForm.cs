@@ -20,21 +20,21 @@ namespace Printer_GUI
 {
     public partial class MainForm : MetroForm
     {
-        RegistryHandler registryHandler;
-
+        ConfigManager loader;
+        IList<IDictionary<string, string>> printerInfo;
         public MainForm()
         {
+            if (!PrivilegeChecker.IsAdministrator())
+            {
+                MessageBox.Show(this, "Please run this app with administrator permission.");
+                this.Close();
+            }
             InitializeComponent();
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (!PrivilegeChecker.IsAdministrator())
-            {
-                MetroMessageBox.Show(this, "Please run this app with administrator permission.");
-                this.Close();
-            }
+            loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
             DownloadInformation();
-            registryHandler = new RegistryHandler(ConstFields.REGISTRY_ROOT);
         }
         public void DownloadInformation()
         {
@@ -48,23 +48,23 @@ namespace Printer_GUI
             {
                 return;
             }
-            List<Dictionary<string, string>> printerInfo =
-                JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(e.Result);
+            printerInfo = JsonConvert.DeserializeObject<IList<IDictionary<string, string>>>(e.Result);
             UpdateGridView(printerInfo);
         }
 
         private void button_ApplyChange_Click(object sender, EventArgs e)
         {
-            HashSet<string> confirmedPrinter = new HashSet<string>();
+            IList<IDictionary<string, string>> confirmedPrinter =
+                new List<IDictionary<string, string>>();
             for (int i = 0; i < dataGridView.RowCount; ++i)
             {
                 DataGridViewRow row = dataGridView.Rows[i];
                 if (!row.Cells[3].Value.Equals(new Boolean()))
                 {
-                    confirmedPrinter.Add((string)row.Cells[1].Value);
+                    confirmedPrinter.Add(printerInfo[i]);
                 }
             }
-            registryHandler.WritePrintersToRegistry(confirmedPrinter);
+            loader.SaveAllLoadedPrinters(confirmedPrinter);
             MetroMessageBox.Show(this, "Apply successful!\nRight on any file to print.");
         }
 
@@ -75,9 +75,9 @@ namespace Printer_GUI
         }
         private void button_Credentials_Click(object sender, EventArgs e)
         {
-            CredentialsManager manager = new CredentialsManager(ConstFields.CONFIGRATION_FILE_NAME);
+            ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
 
-            if (!manager.LoadUserCredentials())
+            if (manager.LoadUserCredentials() == null)
             {
                 MetroMessageBox.Show(this, "Cannot find " + ConstFields.CONFIGRATION_FILE_NAME
                     + " in the current directory.\n" +
@@ -96,22 +96,33 @@ namespace Printer_GUI
         }
         private void button_Uninstall_Click(object sender, EventArgs e)
         {
-            registryHandler.FullyRemoveRegistry();
+            ShellExtensionHandler.Uninstall();
             MetroMessageBox.Show(this, "Uninstall successfull!");
             this.Close();
+        }
+        private void button_Install_Click(object sender, EventArgs e)
+        {
+            ShellExtensionHandler.Install();
+            MetroMessageBox.Show(this, "Install successfull!");
         }
 
         /*
          *  Public Controller Interfaces
          */
-        public void UpdateGridView(List<Dictionary<string, string>> printerInfo)
+        public void UpdateGridView(IList<IDictionary<string, string>> printerInfo)
         {
-            HashSet<string> loadedPrinters;
-
             this.button_ApplyChange.Enabled = true;
-            loadedPrinters = registryHandler.LoadPrintersFromRegistry();
-
             dataGridView.Rows.Clear();
+
+            IList<IDictionary<string, string>> loadedPrinters = loader.GetAllLoadedPrinters();
+            ISet<string> printerNameSet = new HashSet<string>();
+            foreach (IDictionary<string, string> p in loadedPrinters)
+            {
+                if (p.ContainsKey("Name"))
+                {
+                    printerNameSet.Add(p["Name"]);
+                }
+            }
 
             foreach (var info in printerInfo)
             {
@@ -122,7 +133,7 @@ namespace Printer_GUI
                 r.Cells[0].Value = info["Location"];
                 r.Cells[1].Value = info["Name"];
                 r.Cells[2].Value = info["Type"];
-                r.Cells[3].Value = loadedPrinters.Contains(info["Name"]);
+                r.Cells[3].Value = printerNameSet.Contains(info["Name"]);
             }
         }
 
