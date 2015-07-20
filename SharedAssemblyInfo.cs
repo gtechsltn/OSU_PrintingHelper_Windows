@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyCompany("Ohio State University")]
-[assembly: AssemblyProduct("Printer_GUI")]
+[assembly: AssemblyProduct("OSU Printing Application")]
 [assembly: AssemblyCopyright("Te Zhang @ OSU.CSE")]
 
 // Version information for an assembly consists of the following four values:

@@ -17,6 +17,10 @@ namespace Printer_GUI
     {
         private const string SUCCESSFUL_SAVING_MESSAGE = "Your username and password is stored securely!";
         private const string UNSUCCESSFUL_SAVING_MESSAGE = "Fail to store your username and password.";
+        private const string INCORRECT_CREDENTIAL_MESSAGE = 
+            "Your username does not match your password\r\n\r\n" 
+            + "Please re-check your username and password or the Internet connection";
+
         private ConfigManager manager;
         public UserCredentialsForm(ConfigManager manager)
         {
@@ -31,7 +35,17 @@ namespace Printer_GUI
             string department = comboBox_Department.Text;
             string username = textBox_Username.Text;
             string password = textBox_Password.Text;
+            /*
+            IDictionary<string, string[]> info = manager.GetServerInfo();
+            string address = info[department][0];
+            SSH_Print.NetworkHandler handler = new SSH_Print.NetworkHandler(address, username, password);
 
+            if (!handler.CheckConnection())
+            {
+                MetroMessageBox.Show(this, INCORRECT_CREDENTIAL_MESSAGE);
+                return;
+            }
+            */
             if (manager.SaveCredentials(department, username, password))
             {
                 MetroMessageBox.Show(this, SUCCESSFUL_SAVING_MESSAGE);

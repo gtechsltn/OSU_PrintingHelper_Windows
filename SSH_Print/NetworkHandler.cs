@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.IO;
 using Renci.SshNet;
 using Utility;
+using System.Diagnostics;
+using Renci.SshNet.Sftp;
 
 namespace SSH_Print
 {
-    class NetworkHandler
+    public class NetworkHandler
     {
         string address;
         string username;
@@ -23,6 +25,23 @@ namespace SSH_Print
             this.username = username;
             this.password = password;
             CommandsList = new List<string>();
+        }
+        public bool CheckConnection()
+        {
+            try
+            {
+                using (var client = new SshClient(address, username, password))
+                {
+                    client.Connect();
+                    client.Disconnect();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+            return true;
         }
         public bool UploadFile(string filePath)
         {
