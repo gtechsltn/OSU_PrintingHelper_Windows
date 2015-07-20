@@ -3,18 +3,22 @@
 ### Introduction
 This is a printing application for the Ohio State University.
 The intention of creating this application is to help CSE major student to 
-print their documents using CSE printers more efficiently. Of course,
-it can support different majors, departments such as ECE.
+print their documents using department printers more efficiently.
+Besides, it also support ECE department.
+
+### Download link
+
+[Download Here](http://web.cse.ohio-state.edu/~zhante/printing-app-windows.zip).
 
 ### Installation steps
 1. Run Printer_GUI.exe as **administator**.
-2. Click the checkboxs for all the printers that you would like to load.
-3. Click "Apply" in the bottom.
-4. Click on the "Credentials" on the menu bar to enter your account info for a department.
-5. Click on save to save your username and password.
-6. After you've done all the instructions from step 1 to 5, right click on any file you want to print.
-7. Select "OSU Printers" in the right click menu and choose the printer to print.
-8. Enjoy!
+2. Click "Install" Button on the left corner.
+3. Click the checkboxs for all the printers that you would like to load.
+4. Click "Apply" in the bottom.
+5. Click on the "Credentials" on the menu bar to enter your account info for a department.
+6. Click on save to save your username and password.
+7. After you've done all the instructions from step 1 to 5, right click on any file you want to print.
+8. Select "OSU Printers" in the right click menu and choose the printer to print.
 
 ### Tested Supported Operating System
 

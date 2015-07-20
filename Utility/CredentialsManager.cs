@@ -17,7 +17,6 @@ namespace Utility
          */
         private const string c_key = "SEVMTE9fV09STEQ=";
         private const string c_iv = "V0hBVF9ET19ZT1VfV0FOVA==";
-        private const string XML_SERVER_INFO_LOCATION = "//configuration/server_info";
 
         public static string EncryptText(string openText)
         {
