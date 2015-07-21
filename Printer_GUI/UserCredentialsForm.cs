@@ -35,6 +35,8 @@ namespace Printer_GUI
             string department = comboBox_Department.Text;
             string username = textBox_Username.Text;
             string password = textBox_Password.Text;
+
+            //Currently disabled 
             /*
             IDictionary<string, string[]> info = manager.GetServerInfo();
             string address = info[department][0];
