@@ -8,6 +8,7 @@ using Renci.SshNet;
 using Utility;
 using System.Diagnostics;
 using Renci.SshNet.Sftp;
+using System.Net;
 
 namespace SSH_Print
 {
@@ -18,6 +19,9 @@ namespace SSH_Print
         string password;
 
         IList<string> CommandsList;
+        private const string PRINTING_COMMAND_TEMPLATE = @"lp -d {0} ""{1}""";
+        private const string REMOVE_COMMAND = @"rm -f ""{0}""";
+        private const string CHANGE_DIR_COMMMAND_TEMPLATE = @"cd ""{0}""";
 
         public NetworkHandler(string address, string username, string password)
         {
@@ -25,23 +29,6 @@ namespace SSH_Print
             this.username = username;
             this.password = password;
             CommandsList = new List<string>();
-        }
-        public bool CheckConnection()
-        {
-            try
-            {
-                using (var client = new SshClient(address, username, password))
-                {
-                    client.Connect();
-                    client.Disconnect();
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                return false;
-            }
-            return true;
         }
         public bool UploadFile(string filePath)
         {
@@ -88,7 +75,8 @@ namespace SSH_Print
         }
         public void PrintFile(string FileName, string PrinterName)
         {
-            string changeDirectoryCommand = @"cd " + ConstFields.TEMP_PRINT_DIRECTORY;
+            string changeDirectoryCommand =
+                String.Format(CHANGE_DIR_COMMMAND_TEMPLATE, ConstFields.TEMP_PRINT_DIRECTORY);
             CommandsList.Add(changeDirectoryCommand);
 
             IList<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(FileName);
@@ -96,18 +84,19 @@ namespace SSH_Print
             {
                 CommandsList.Add(command);
             }
-            string GeneralName = FileName;
+            string NameAsPdf = FileName;
             if (ConvertCommandList.Count > 0)
             {
-                GeneralName = FileFormatConverter.GetFileNameAsPdf(FileName);
+                NameAsPdf = FileFormatConverter.GetFileNameAsPdf(FileName);
             }
-            string PrintingCommand = String.Format(@"lp -d {0} ""{1}""", PrinterName, GeneralName);
-            ConfigManager Loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
-            PrintingCommand += (" " + string.Join(" ", Loader.GetEnabledPrintingOptions()));
+            string PrintingCommand = String.Format(PRINTING_COMMAND_TEMPLATE, PrinterName, NameAsPdf);
+            ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
+
+            PrintingCommand += (" " + string.Join(" ", manager.GetEnabledPrintingOptions()));
             CommandsList.Add(PrintingCommand);
 
-            string removeFileCommand = String.Format(@"rm -f ""{0}""", FileName);
-            CommandsList.Add(removeFileCommand);
+            string RemoveFileCommand = String.Format(REMOVE_COMMAND, FileName);
+            CommandsList.Add(RemoveFileCommand);
 
             try
             {
@@ -115,9 +104,9 @@ namespace SSH_Print
                 {
                     client.Connect();
                     string commmand = string.Join("; ", CommandsList);
+                    Console.WriteLine(commmand);
                     SshCommand result = client.RunCommand(commmand);
                     CommandsList.Clear();
-                    Console.WriteLine(commmand);
                     Console.WriteLine(result.Result);
                     client.Disconnect();
                 }
@@ -127,6 +116,27 @@ namespace SSH_Print
                 Console.WriteLine(ex);
             }
             Console.ReadLine();
+        }
+
+        public async Task<bool> CheckConnectionAsync()
+        {
+            return await Task.Factory.StartNew<bool>(() =>
+            {
+                try
+                {
+                    using (var client = new SshClient(address, username, password))
+                    {
+                        client.Connect();
+                        client.Disconnect();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    return false;
+                }
+                return true;
+            });
         }
     }
 }

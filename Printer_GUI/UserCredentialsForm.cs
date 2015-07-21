@@ -10,6 +10,7 @@ using System.Windows;
 using Utility;
 using MetroFramework.Forms;
 using MetroFramework;
+using System.Threading.Tasks;
 
 namespace Printer_GUI
 {
@@ -22,6 +23,11 @@ namespace Printer_GUI
             + "Please re-check your username and password or the Internet connection";
 
         private ConfigManager manager;
+
+        private string department;
+        private string username;
+        private string password;
+
         public UserCredentialsForm(ConfigManager manager)
         {
             this.manager = manager;
@@ -30,32 +36,20 @@ namespace Printer_GUI
             comboBox_Department.SelectedIndex = 0;
         }
 
-        private void button_StorePassword_Click(object sender, EventArgs e)
+        private async void button_StorePassword_Click(object sender, EventArgs e)
         {
-            string department = comboBox_Department.Text;
-            string username = textBox_Username.Text;
-            string password = textBox_Password.Text;
-
-            //Currently disabled 
-            /*
+            department = comboBox_Department.Text;
+            username = textBox_Username.Text;
+            password = textBox_Password.Text;
             IDictionary<string, string[]> info = manager.GetServerInfo();
             string address = info[department][0];
             SSH_Print.NetworkHandler handler = new SSH_Print.NetworkHandler(address, username, password);
-
-            if (!handler.CheckConnection())
+            if (!(await handler.CheckConnectionAsync())) 
             {
                 MetroMessageBox.Show(this, INCORRECT_CREDENTIAL_MESSAGE);
                 return;
             }
-            */
-            if (manager.SaveCredentials(department, username, password))
-            {
-                MetroMessageBox.Show(this, SUCCESSFUL_SAVING_MESSAGE);
-            }
-            else
-            {
-                MetroMessageBox.Show(this, UNSUCCESSFUL_SAVING_MESSAGE);
-            }
+            SaveCredentials();
         }
 
         private void comboBox_Department_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,6 +58,18 @@ namespace Printer_GUI
             string department = comboBox_Department.Text;
             textBox_Username.Text = manager.GetUserName(department);
             textBox_Password.Text = manager.GetPassword(department);
+        }
+
+        private void SaveCredentials()
+        {
+            if (manager.SaveCredentials(department, username, password))
+            {
+                MetroMessageBox.Show(this, SUCCESSFUL_SAVING_MESSAGE);
+            }
+            else
+            {
+                MetroMessageBox.Show(this, UNSUCCESSFUL_SAVING_MESSAGE);
+            }
         }
     }
 }

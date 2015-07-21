@@ -22,7 +22,9 @@ namespace Utility
         private const string PRINTING_OPTION_LOCATION = BASE_CONFIG_LOCATION + "/printing_options";
         private const string LOADED_PRINTER_LOCATION = BASE_CONFIG_LOCATION + "/loaded_printers";
 
-        private readonly Dictionary<string, int> SERVER_FIELD_MAP = new Dictionary<string, int>() {
+        private readonly Dictionary<string, int> SERVER_FIELD_MAP =
+            new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+        {
             {"address", 0}, {"username", 1}, {"password", 2}
         };
 
@@ -58,7 +60,8 @@ namespace Utility
         /// <returns>A map mapping from department to array of ["address", "username", "password"]</returns>
         public IDictionary<string, string[]> GetServerInfo()
         {
-            IDictionary<string, string[]> ServerInfo = new Dictionary<string, string[]>();
+            IDictionary<string, string[]> ServerInfo =
+                new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase);
             try
             {
                 doc.Load(ConfigPath);
@@ -114,7 +117,8 @@ namespace Utility
         }
         public IDictionary<string, string> GetDepartmentMap()
         {
-            IDictionary<string, string> DepartmentMap = new Dictionary<string, string>();
+            IDictionary<string, string> DepartmentMap =
+                new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             try
             {
                 doc.Load(ConfigPath);
@@ -206,7 +210,8 @@ namespace Utility
                 XmlNode LoadedPrinters = doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
                 foreach (XmlNode XmlPrinter in LoadedPrinters.ChildNodes)
                 {
-                    IDictionary<string, string> printer = new Dictionary<string, string>();
+                    IDictionary<string, string> printer =
+                        new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     for (int i = 0; i < XmlPrinter.Attributes.Count; ++i)
                     {
                         var item = XmlPrinter.Attributes[i];
@@ -287,7 +292,7 @@ namespace Utility
         public IDictionary<string, Tuple<string, string>> LoadUserCredentials()
         {
             IDictionary<string, Tuple<string, string>> userCredentials =
-                new Dictionary<string, Tuple<string, string>>();
+                new Dictionary<string, Tuple<string, string>>(StringComparer.OrdinalIgnoreCase);
             try
             {
                 doc.Load(ConfigPath);

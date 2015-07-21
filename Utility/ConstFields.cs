@@ -28,8 +28,8 @@ namespace Utility
         public static readonly string[] SUPPORTED_CONVERTING_TO_PDF_EXTENSION = { ".doc", ".docx", ".xls", ".xlsx" };
 
         public static readonly string REGASM_PATH_32BIT =
-        Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
-            @"Microsoft.NET\Framework\v4.0.30319\regasm.exe");
+            Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
+                @"Microsoft.NET\Framework\v4.0.30319\regasm.exe");
         public static readonly string REGASM_PATH_64BIT =
             Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                 @"Microsoft.NET\Framework64\v4.0.30319\regasm.exe");

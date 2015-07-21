@@ -89,6 +89,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="JsonDownloader.cs" />
     <Compile Include="PrivilegeChecker.cs" />
     <Compile Include="ConfigManager.cs" />
     <Compile Include="ConstFields.cs" />

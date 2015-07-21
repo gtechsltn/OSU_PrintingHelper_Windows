@@ -14,44 +14,49 @@ using MetroFramework.Forms;
 using MetroFramework;
 
 using Utility;
-using Newtonsoft.Json;
 
 namespace Printer_GUI
 {
     public partial class MainForm : MetroForm
     {
-        ConfigManager loader;
-        IList<IDictionary<string, string>> printerInfo;
+        private ConfigManager loader;
+        private IList<IDictionary<string, string>> printerInfo;
+        private event EventHandler DownloadCompletedEventHandler;
+
         public MainForm()
+        {
+            PrivilegeCheck();
+
+            DownloadCompletedEventHandler += OnPrinterInformationDownloaded;
+            JsonDownloader<IList<IDictionary<string, string>>> Downloader
+                = new JsonDownloader<IList<IDictionary<string, string>>>(DownloadCompletedEventHandler);
+
+            InitializeComponent();
+        }
+        private void PrivilegeCheck()
         {
             if (!PrivilegeChecker.IsAdministrator())
             {
                 MessageBox.Show(this, "Please run this app with administrator permission.");
                 this.Close();
             }
-            InitializeComponent();
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
             loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
-            DownloadInformation();
-        }
-        public void DownloadInformation()
-        {
-            WebClient downloader = new WebClient();
-            downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(onDownloadStringCompleted);
-            downloader.DownloadStringAsync(new Uri(ConstFields.PRINTER_LIST_URL));
-        }
-        public void onDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error != null)
+            if (printerInfo != null) 
             {
-                return;
+                UpdateGridView(printerInfo);
             }
-            printerInfo = JsonConvert.DeserializeObject<IList<IDictionary<string, string>>>(e.Result);
-            UpdateGridView(printerInfo);
         }
-
+        private void OnPrinterInformationDownloaded(object sender, EventArgs e) 
+        {
+            printerInfo = (IList<IDictionary<string, string>>)sender;
+            if (this.dataGridView != null) 
+            {
+                UpdateGridView(printerInfo);
+            }
+        }
         private void button_ApplyChange_Click(object sender, EventArgs e)
         {
             IList<IDictionary<string, string>> confirmedPrinter =
@@ -97,13 +102,13 @@ namespace Printer_GUI
         private void button_Uninstall_Click(object sender, EventArgs e)
         {
             ShellExtensionHandler.Uninstall();
-            MetroMessageBox.Show(this, "Uninstall successfull!");
+            MetroMessageBox.Show(this, "Application Uninstalled");
             this.Close();
         }
         private void button_Install_Click(object sender, EventArgs e)
         {
             ShellExtensionHandler.Install();
-            MetroMessageBox.Show(this, "Install successfull!");
+            MetroMessageBox.Show(this, "Application Installed");
         }
 
         /*
