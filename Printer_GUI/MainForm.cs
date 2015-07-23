@@ -17,6 +17,7 @@ using Utility;
 
 namespace Printer_GUI
 {
+    public enum ColumnFields { Department = 0, Location, Name, Type };
     public partial class MainForm : MetroForm
     {
         private ConfigManager loader;
@@ -44,15 +45,15 @@ namespace Printer_GUI
         private void MainForm_Load(object sender, EventArgs e)
         {
             loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
-            if (printerInfo != null) 
+            if (printerInfo != null)
             {
                 UpdateGridView(printerInfo);
             }
         }
-        private void OnPrinterInformationDownloaded(object sender, EventArgs e) 
+        private void OnPrinterInformationDownloaded(object sender, EventArgs e)
         {
             printerInfo = (IList<IDictionary<string, string>>)sender;
-            if (this.dataGridView != null) 
+            if (this.dataGridView != null)
             {
                 UpdateGridView(printerInfo);
             }
@@ -135,10 +136,14 @@ namespace Printer_GUI
                 int rowIndex = dataGridView.RowCount - 1;
                 DataGridViewRow r = dataGridView.Rows[rowIndex];
 
-                r.Cells[0].Value = info["Location"];
-                r.Cells[1].Value = info["Name"];
-                r.Cells[2].Value = info["Type"];
-                r.Cells[3].Value = printerNameSet.Contains(info["Name"]);
+                foreach (ColumnFields field in Enum.GetValues(typeof(ColumnFields)))
+                {
+                    if (info.ContainsKey(field.ToString()))
+                    {
+                        r.Cells[(int)field].Value = info[field.ToString()];
+                    }
+                }
+                r.Cells[r.Cells.Count - 1].Value = printerNameSet.Contains(info["Name"]);
             }
         }
 

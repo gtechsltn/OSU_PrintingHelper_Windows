@@ -35,15 +35,16 @@
             this.button_ApplyChange = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
-            this.PrinterLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrinterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrinterType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loaded = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button_Options = new System.Windows.Forms.Button();
             this.button_About = new System.Windows.Forms.Button();
             this.button_Uninstall = new System.Windows.Forms.Button();
             this.button_Credentials = new System.Windows.Forms.Button();
             this.button_Install = new System.Windows.Forms.Button();
+            this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrinterLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrinterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrinterType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loaded = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +81,7 @@
             this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Department,
             this.PrinterLocation,
             this.PrinterName,
             this.PrinterType,
@@ -110,29 +112,6 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView.Size = new System.Drawing.Size(637, 276);
             this.dataGridView.TabIndex = 2;
-            // 
-            // PrinterLocation
-            // 
-            this.PrinterLocation.HeaderText = "Location";
-            this.PrinterLocation.Name = "PrinterLocation";
-            this.PrinterLocation.ReadOnly = true;
-            // 
-            // PrinterName
-            // 
-            this.PrinterName.HeaderText = "Name";
-            this.PrinterName.Name = "PrinterName";
-            this.PrinterName.ReadOnly = true;
-            // 
-            // PrinterType
-            // 
-            this.PrinterType.HeaderText = "Type";
-            this.PrinterType.Name = "PrinterType";
-            this.PrinterType.ReadOnly = true;
-            // 
-            // Loaded
-            // 
-            this.Loaded.HeaderText = "Loaded";
-            this.Loaded.Name = "Loaded";
             // 
             // button_Options
             // 
@@ -194,6 +173,41 @@
             this.button_Install.UseVisualStyleBackColor = true;
             this.button_Install.Click += new System.EventHandler(this.button_Install_Click);
             // 
+            // Department
+            // 
+            this.Department.FillWeight = 74.23856F;
+            this.Department.HeaderText = "Dept";
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
+            this.Department.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PrinterLocation
+            // 
+            this.PrinterLocation.FillWeight = 203.0456F;
+            this.PrinterLocation.HeaderText = "Location";
+            this.PrinterLocation.Name = "PrinterLocation";
+            this.PrinterLocation.ReadOnly = true;
+            // 
+            // PrinterName
+            // 
+            this.PrinterName.FillWeight = 74.23856F;
+            this.PrinterName.HeaderText = "Name";
+            this.PrinterName.Name = "PrinterName";
+            this.PrinterName.ReadOnly = true;
+            // 
+            // PrinterType
+            // 
+            this.PrinterType.FillWeight = 74.23856F;
+            this.PrinterType.HeaderText = "Type";
+            this.PrinterType.Name = "PrinterType";
+            this.PrinterType.ReadOnly = true;
+            // 
+            // Loaded
+            // 
+            this.Loaded.FillWeight = 74.23856F;
+            this.Loaded.HeaderText = "Loaded";
+            this.Loaded.Name = "Loaded";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,15 +236,16 @@
 
         private System.Windows.Forms.Button button_ApplyChange;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterType;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Loaded;
         private System.Windows.Forms.Button button_Options;
         private System.Windows.Forms.Button button_About;
         private System.Windows.Forms.Button button_Uninstall;
         private System.Windows.Forms.Button button_Credentials;
         private System.Windows.Forms.Button button_Install;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Department;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrinterType;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Loaded;
     }
 }
 
