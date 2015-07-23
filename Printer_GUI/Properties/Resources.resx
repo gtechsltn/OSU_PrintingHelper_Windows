@@ -117,8 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationInstalledPrompt" xml:space="preserve">
+    <value>Application Installed</value>
+  </data>
+  <data name="ApplicationUninstalledPrompt" xml:space="preserve">
+    <value>Application Uninstalled</value>
+  </data>
+  <data name="ConfigurationFileNotFoundPrompt" xml:space="preserve">
+    <value>Cannot find configuration file in the current directory.
+Or the configuration file is corrupted.</value>
+  </data>
+  <data name="CredentialFailedSavdPrompt" xml:space="preserve">
+    <value>Cannot save your user name and password to the configuration file.
+Or the configuration file is corrupted.</value>
+  </data>
+  <data name="CredentialIncorrectPrompt" xml:space="preserve">
+    <value>Your username does not match your password.
+Please re-check your username and password or the Internet connection.</value>
+  </data>
+  <data name="CredentialSuccessfulSavdPrompt" xml:space="preserve">
+    <value>Your username and password is stored securely!</value>
+  </data>
+  <data name="CredentialWaitForCheckingCompletePrompt" xml:space="preserve">
+    <value>Please wait before when checking your username and password.</value>
+  </data>
+  <data name="NonAdminPrompt" xml:space="preserve">
+    <value>Please run this app with administrator permission.</value>
+  </data>
+  <data name="OptionFailedSavedPrompt" xml:space="preserve">
+    <value>A Problem was encoutered while saving.
+Please make sure the configuration file is readable and writable</value>
+  </data>
+  <data name="OptionSuccessfulSavedPrompt" xml:space="preserve">
+    <value>Options saved successufully!</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\printer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SavePrinterSuccessfulPrompt" xml:space="preserve">
+    <value>Save successful!
+Right on any file to print.</value>
   </data>
 </root>

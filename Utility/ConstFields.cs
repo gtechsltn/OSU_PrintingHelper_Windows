@@ -33,5 +33,7 @@ namespace Utility
         public static readonly string REGASM_PATH_64BIT =
             Path.Combine(Environment.ExpandEnvironmentVariables("%SystemRoot%"),
                 @"Microsoft.NET\Framework64\v4.0.30319\regasm.exe");
+
+        public const string PRINTER_IDENTIFIER_FILED = "Name";
     }
 }

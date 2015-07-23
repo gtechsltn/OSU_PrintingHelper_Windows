@@ -50,9 +50,8 @@ namespace Utility
             p.StartInfo.FileName = "taskkill";
             p.StartInfo.Arguments = " /IM explorer.exe /F";
             p.Start();
+            p.WaitForExit();
 
-            int milliseconds = 500;
-            Thread.Sleep(milliseconds);
             Process.Start(Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe"));
         }
     }

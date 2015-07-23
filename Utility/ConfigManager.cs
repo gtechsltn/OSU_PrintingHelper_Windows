@@ -289,7 +289,7 @@ namespace Utility
         /// <returns>
         /// A map mapping from department to a Tuple which has the format (username, password)
         /// </returns>
-        public IDictionary<string, Tuple<string, string>> LoadUserCredentials()
+        public IDictionary<string, Tuple<string, string>> GetUserCredentials()
         {
             IDictionary<string, Tuple<string, string>> userCredentials =
                 new Dictionary<string, Tuple<string, string>>(StringComparer.OrdinalIgnoreCase);
@@ -315,7 +315,7 @@ namespace Utility
 
         public string GetUserName(string department)
         {
-            IDictionary<string, Tuple<string, string>> userCredentials = LoadUserCredentials();
+            IDictionary<string, Tuple<string, string>> userCredentials = GetUserCredentials();
             if (userCredentials.ContainsKey(department))
             {
                 return userCredentials[department].Item1;
@@ -325,7 +325,7 @@ namespace Utility
 
         public string GetPassword(string department)
         {
-            IDictionary<string, Tuple<string, string>> userCredentials = LoadUserCredentials();
+            IDictionary<string, Tuple<string, string>> userCredentials = GetUserCredentials();
             if (userCredentials.ContainsKey(department))
             {
                 string password = userCredentials[department].Item2;

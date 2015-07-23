@@ -7,7 +7,7 @@
     <ProjectGuid>{1F5A50EA-B363-4D35-B6B4-AC3EEA382374}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Printer_GUI.View</RootNamespace>
+    <RootNamespace>Printer_GUI</RootNamespace>
     <AssemblyName>Printer_GUI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

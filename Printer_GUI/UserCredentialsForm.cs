@@ -7,22 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows;
-using Utility;
 using MetroFramework.Forms;
 using MetroFramework;
 using System.Threading.Tasks;
+using Printer_GUI.Properties;
+
+using Utility;
 
 namespace Printer_GUI
 {
     public partial class UserCredentialsForm : MetroForm
     {
-        private const string SUCCESSFUL_SAVING_MESSAGE = "Your username and password is stored securely!";
-        private const string UNSUCCESSFUL_SAVING_MESSAGE = "Fail to store your username and password.";
-        private const string INCORRECT_CREDENTIAL_MESSAGE = 
-            "Your username does not match your password\r\n\r\n" 
-            + "Please re-check your username and password or the Internet connection";
-
         private ConfigManager manager;
+        private SSH_Print.NetworkHandler handler;
 
         private string department;
         private string username;
@@ -38,18 +35,26 @@ namespace Printer_GUI
 
         private async void button_StorePassword_Click(object sender, EventArgs e)
         {
+            if (handler != null)
+            {
+                return;
+            }
+
             department = comboBox_Department.Text;
             username = textBox_Username.Text;
             password = textBox_Password.Text;
             IDictionary<string, string[]> info = manager.GetServerInfo();
             string address = info[department][0];
-            SSH_Print.NetworkHandler handler = new SSH_Print.NetworkHandler(address, username, password);
+            handler = new SSH_Print.NetworkHandler(address, username, password);
             if (!(await handler.CheckConnectionAsync())) 
             {
-                MetroMessageBox.Show(this, INCORRECT_CREDENTIAL_MESSAGE);
-                return;
+                MetroMessageBox.Show(this, Resources.CredentialIncorrectPrompt);
             }
-            SaveCredentials();
+            else
+            {
+                SaveCredentials();
+            }
+            handler = null;
         }
 
         private void comboBox_Department_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,11 +69,11 @@ namespace Printer_GUI
         {
             if (manager.SaveCredentials(department, username, password))
             {
-                MetroMessageBox.Show(this, SUCCESSFUL_SAVING_MESSAGE);
+                MetroMessageBox.Show(this, Resources.CredentialSuccessfulSavdPrompt);
             }
             else
             {
-                MetroMessageBox.Show(this, UNSUCCESSFUL_SAVING_MESSAGE);
+                MetroMessageBox.Show(this, Resources.CredentialFailedSavdPrompt);
             }
         }
     }

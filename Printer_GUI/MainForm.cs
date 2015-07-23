@@ -14,6 +14,7 @@ using MetroFramework.Forms;
 using MetroFramework;
 
 using Utility;
+using Printer_GUI.Properties;
 
 namespace Printer_GUI
 {
@@ -38,7 +39,7 @@ namespace Printer_GUI
         {
             if (!PrivilegeChecker.IsAdministrator())
             {
-                MessageBox.Show(this, "Please run this app with administrator permission.");
+                MessageBox.Show(this, Resources.NonAdminPrompt);
                 this.Close();
             }
         }
@@ -65,13 +66,13 @@ namespace Printer_GUI
             for (int i = 0; i < dataGridView.RowCount; ++i)
             {
                 DataGridViewRow row = dataGridView.Rows[i];
-                if (!row.Cells[3].Value.Equals(new Boolean()))
+                if (!row.Cells[row.Cells.Count - 1].Value.Equals(new Boolean()))
                 {
                     confirmedPrinter.Add(printerInfo[i]);
                 }
             }
             loader.SaveAllLoadedPrinters(confirmedPrinter);
-            MetroMessageBox.Show(this, "Apply successful!\nRight on any file to print.");
+            MetroMessageBox.Show(this, Resources.SavePrinterSuccessfulPrompt);
         }
 
         private void button_Options_Click(object sender, EventArgs e)
@@ -83,11 +84,9 @@ namespace Printer_GUI
         {
             ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
 
-            if (manager.LoadUserCredentials() == null)
+            if (manager.GetUserCredentials() == null)
             {
-                MetroMessageBox.Show(this, "Cannot find " + ConstFields.CONFIGRATION_FILE_NAME
-                    + " in the current directory.\n" +
-                    "Or the configuration file is corrupted.");
+                MetroMessageBox.Show(this, Resources.ConfigurationFileNotFoundPrompt);
                 return;
             }
 
@@ -103,18 +102,15 @@ namespace Printer_GUI
         private void button_Uninstall_Click(object sender, EventArgs e)
         {
             ShellExtensionHandler.Uninstall();
-            MetroMessageBox.Show(this, "Application Uninstalled");
+            MetroMessageBox.Show(this, Resources.ApplicationUninstalledPrompt);
             this.Close();
         }
         private void button_Install_Click(object sender, EventArgs e)
         {
             ShellExtensionHandler.Install();
-            MetroMessageBox.Show(this, "Application Installed");
+            MetroMessageBox.Show(this, Resources.ApplicationInstalledPrompt);
         }
 
-        /*
-         *  Public Controller Interfaces
-         */
         public void UpdateGridView(IList<IDictionary<string, string>> printerInfo)
         {
             this.button_ApplyChange.Enabled = true;
@@ -124,9 +120,9 @@ namespace Printer_GUI
             ISet<string> printerNameSet = new HashSet<string>();
             foreach (IDictionary<string, string> p in loadedPrinters)
             {
-                if (p.ContainsKey("Name"))
+                if (p.ContainsKey(ConstFields.PRINTER_IDENTIFIER_FILED))
                 {
-                    printerNameSet.Add(p["Name"]);
+                    printerNameSet.Add(p[ConstFields.PRINTER_IDENTIFIER_FILED]);
                 }
             }
 
@@ -143,7 +139,8 @@ namespace Printer_GUI
                         r.Cells[(int)field].Value = info[field.ToString()];
                     }
                 }
-                r.Cells[r.Cells.Count - 1].Value = printerNameSet.Contains(info["Name"]);
+                r.Cells[r.Cells.Count - 1].Value =
+                    printerNameSet.Contains(info[ConstFields.PRINTER_IDENTIFIER_FILED]);
             }
         }
 

@@ -11,15 +11,13 @@ using System.Resources;
 using System.Reflection;
 using MetroFramework.Forms;
 using MetroFramework;
+using Printer_GUI.Properties;
 
 namespace Printer_GUI
 {
     public partial class PrintingOptionsForm : MetroForm
     {
         ConfigManager Loader;
-        const string FAILING_SAVED_STRING = "A Problem was encoutered while saving.\n"
-            + "Please make sure the configuration file is readable and writable";
-        const string SUCCESSFUL_SAVED_STRING = "Options saved successufully!";
         public PrintingOptionsForm()
         {
             InitializeComponent();
@@ -40,10 +38,10 @@ namespace Printer_GUI
             {
                 CheckedOptions.Add(Item.ToString());
             }
-            string Message = SUCCESSFUL_SAVED_STRING;
+            string Message = Resources.OptionSuccessfulSavedPrompt;
             if (!Loader.SaveEnabledPrintingOptions(CheckedOptions))
             {
-                Message = FAILING_SAVED_STRING;
+                Message = Resources.OptionFailedSavedPrompt;
             }
             MetroMessageBox.Show(this, Message);
         }

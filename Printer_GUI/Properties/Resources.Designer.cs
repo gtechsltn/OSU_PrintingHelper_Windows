@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Printer_GUI.View.Properties {
+namespace Printer_GUI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Printer_GUI.View.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Printer_GUI.View.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Printer_GUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,12 +61,116 @@ namespace Printer_GUI.View.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application Installed.
+        /// </summary>
+        internal static string ApplicationInstalledPrompt {
+            get {
+                return ResourceManager.GetString("ApplicationInstalledPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Uninstalled.
+        /// </summary>
+        internal static string ApplicationUninstalledPrompt {
+            get {
+                return ResourceManager.GetString("ApplicationUninstalledPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find configuration file in the current directory.
+        ///Or the configuration file is corrupted..
+        /// </summary>
+        internal static string ConfigurationFileNotFoundPrompt {
+            get {
+                return ResourceManager.GetString("ConfigurationFileNotFoundPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot save your user name and password to the configuration file.
+        ///Or the configuration file is corrupted..
+        /// </summary>
+        internal static string CredentialFailedSavdPrompt {
+            get {
+                return ResourceManager.GetString("CredentialFailedSavdPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your username does not match your password.
+        ///Please re-check your username and password or the Internet connection..
+        /// </summary>
+        internal static string CredentialIncorrectPrompt {
+            get {
+                return ResourceManager.GetString("CredentialIncorrectPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your username and password is stored securely!.
+        /// </summary>
+        internal static string CredentialSuccessfulSavdPrompt {
+            get {
+                return ResourceManager.GetString("CredentialSuccessfulSavdPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait before when checking your username and password..
+        /// </summary>
+        internal static string CredentialWaitForCheckingCompletePrompt {
+            get {
+                return ResourceManager.GetString("CredentialWaitForCheckingCompletePrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please run this app with administrator permission..
+        /// </summary>
+        internal static string NonAdminPrompt {
+            get {
+                return ResourceManager.GetString("NonAdminPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Problem was encoutered while saving.
+        ///Please make sure the configuration file is readable and writable.
+        /// </summary>
+        internal static string OptionFailedSavedPrompt {
+            get {
+                return ResourceManager.GetString("OptionFailedSavedPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options saved successufully!.
+        /// </summary>
+        internal static string OptionSuccessfulSavedPrompt {
+            get {
+                return ResourceManager.GetString("OptionSuccessfulSavedPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Printer {
             get {
                 object obj = ResourceManager.GetObject("Printer", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save successful!
+        ///Right on any file to print..
+        /// </summary>
+        internal static string SavePrinterSuccessfulPrompt {
+            get {
+                return ResourceManager.GetString("SavePrinterSuccessfulPrompt", resourceCulture);
             }
         }
     }
