@@ -1,4 +1,4 @@
-# OSU Printing Application (Windows Platform)
+# OSU Printing Helper (Windows Platform)
 
 ### Introduction
 This is a printing application for the Ohio State University.
@@ -8,7 +8,7 @@ Besides, it also support ECE department.
 
 ### Download link
 
-[Download Here](http://web.cse.ohio-state.edu/~zhante/printing-app-windows.zip).
+[Download Here](http://web.cse.ohio-state.edu/~zhante/OSU-PrintingHelper-Windows.zip).
 
 ### Installation steps
 1. Run Printer_GUI.exe as **administator**.
