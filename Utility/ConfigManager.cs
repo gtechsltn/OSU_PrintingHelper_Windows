@@ -35,7 +35,7 @@ namespace Utility
         {
             this.ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
             this.doc = new XmlDocument();
-            if (!File.Exists(filename))
+            if (!File.Exists(this.ConfigPath))
             {
                 DownloadConfig(ConstFields.CONFIGRATION_FILE_URL, filename);
             }

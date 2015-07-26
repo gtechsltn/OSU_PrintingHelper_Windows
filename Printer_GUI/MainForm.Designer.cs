@@ -35,16 +35,15 @@
             this.button_ApplyChange = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
-            this.button_Options = new System.Windows.Forms.Button();
-            this.button_About = new System.Windows.Forms.Button();
-            this.button_Uninstall = new System.Windows.Forms.Button();
-            this.button_Credentials = new System.Windows.Forms.Button();
-            this.button_Install = new System.Windows.Forms.Button();
             this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrinterLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrinterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrinterType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loaded = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button_Options = new System.Windows.Forms.Button();
+            this.button_About = new System.Windows.Forms.Button();
+            this.button_Uninstall = new System.Windows.Forms.Button();
+            this.button_Credentials = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +112,41 @@
             this.dataGridView.Size = new System.Drawing.Size(637, 276);
             this.dataGridView.TabIndex = 2;
             // 
+            // Department
+            // 
+            this.Department.FillWeight = 74.23856F;
+            this.Department.HeaderText = "Dept";
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
+            this.Department.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PrinterLocation
+            // 
+            this.PrinterLocation.FillWeight = 203.0456F;
+            this.PrinterLocation.HeaderText = "Location";
+            this.PrinterLocation.Name = "PrinterLocation";
+            this.PrinterLocation.ReadOnly = true;
+            // 
+            // PrinterName
+            // 
+            this.PrinterName.FillWeight = 74.23856F;
+            this.PrinterName.HeaderText = "Name";
+            this.PrinterName.Name = "PrinterName";
+            this.PrinterName.ReadOnly = true;
+            // 
+            // PrinterType
+            // 
+            this.PrinterType.FillWeight = 74.23856F;
+            this.PrinterType.HeaderText = "Type";
+            this.PrinterType.Name = "PrinterType";
+            this.PrinterType.ReadOnly = true;
+            // 
+            // Loaded
+            // 
+            this.Loaded.FillWeight = 74.23856F;
+            this.Loaded.HeaderText = "Loaded";
+            this.Loaded.Name = "Loaded";
+            // 
             // button_Options
             // 
             this.button_Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -161,59 +195,11 @@
             this.button_Credentials.UseVisualStyleBackColor = true;
             this.button_Credentials.Click += new System.EventHandler(this.button_Credentials_Click);
             // 
-            // button_Install
-            // 
-            this.button_Install.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_Install.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Install.Location = new System.Drawing.Point(13, 367);
-            this.button_Install.Name = "button_Install";
-            this.button_Install.Size = new System.Drawing.Size(75, 30);
-            this.button_Install.TabIndex = 7;
-            this.button_Install.Text = "Install";
-            this.button_Install.UseVisualStyleBackColor = true;
-            this.button_Install.Click += new System.EventHandler(this.button_Install_Click);
-            // 
-            // Department
-            // 
-            this.Department.FillWeight = 74.23856F;
-            this.Department.HeaderText = "Dept";
-            this.Department.Name = "Department";
-            this.Department.ReadOnly = true;
-            this.Department.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PrinterLocation
-            // 
-            this.PrinterLocation.FillWeight = 203.0456F;
-            this.PrinterLocation.HeaderText = "Location";
-            this.PrinterLocation.Name = "PrinterLocation";
-            this.PrinterLocation.ReadOnly = true;
-            // 
-            // PrinterName
-            // 
-            this.PrinterName.FillWeight = 74.23856F;
-            this.PrinterName.HeaderText = "Name";
-            this.PrinterName.Name = "PrinterName";
-            this.PrinterName.ReadOnly = true;
-            // 
-            // PrinterType
-            // 
-            this.PrinterType.FillWeight = 74.23856F;
-            this.PrinterType.HeaderText = "Type";
-            this.PrinterType.Name = "PrinterType";
-            this.PrinterType.ReadOnly = true;
-            // 
-            // Loaded
-            // 
-            this.Loaded.FillWeight = 74.23856F;
-            this.Loaded.HeaderText = "Loaded";
-            this.Loaded.Name = "Loaded";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 412);
-            this.Controls.Add(this.button_Install);
             this.Controls.Add(this.button_Credentials);
             this.Controls.Add(this.button_Uninstall);
             this.Controls.Add(this.button_About);
@@ -240,7 +226,6 @@
         private System.Windows.Forms.Button button_About;
         private System.Windows.Forms.Button button_Uninstall;
         private System.Windows.Forms.Button button_Credentials;
-        private System.Windows.Forms.Button button_Install;
         private System.Windows.Forms.DataGridViewTextBoxColumn Department;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrinterLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrinterName;

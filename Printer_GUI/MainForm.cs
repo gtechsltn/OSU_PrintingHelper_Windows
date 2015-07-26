@@ -29,9 +29,15 @@ namespace Printer_GUI
         {
             PrivilegeCheck();
 
+            if (!ShellExtensionHandler.CheckInstallationStatus())
+            {
+                ShellExtensionHandler.Install();
+            }
+
             DownloadCompletedEventHandler += OnPrinterInformationDownloaded;
             JsonDownloader<IList<IDictionary<string, string>>> Downloader
-                = new JsonDownloader<IList<IDictionary<string, string>>>(DownloadCompletedEventHandler);
+                = new JsonDownloader<IList<IDictionary<string, string>>>(
+                    ConstFields.PRINTER_LIST_URL, DownloadCompletedEventHandler);
 
             InitializeComponent();
         }
@@ -105,12 +111,6 @@ namespace Printer_GUI
             MetroMessageBox.Show(this, Resources.ApplicationUninstalledPrompt);
             this.Close();
         }
-        private void button_Install_Click(object sender, EventArgs e)
-        {
-            ShellExtensionHandler.Install();
-            MetroMessageBox.Show(this, Resources.ApplicationInstalledPrompt);
-        }
-
         public void UpdateGridView(IList<IDictionary<string, string>> printerInfo)
         {
             this.button_ApplyChange.Enabled = true;

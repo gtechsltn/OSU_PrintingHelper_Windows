@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Utility;
 using System.Resources;
 using System.Reflection;
+
+using Printer_GUI.Properties;
+
 using MetroFramework.Forms;
 using MetroFramework;
-using Printer_GUI.Properties;
+
+using Utility;
 
 namespace Printer_GUI
 {

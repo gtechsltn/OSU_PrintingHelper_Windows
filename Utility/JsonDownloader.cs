@@ -10,12 +10,12 @@ namespace Utility
     public class JsonDownloader<T>
     {
         private event EventHandler Handler;
-        public JsonDownloader(EventHandler Handler)
+        public JsonDownloader(string url, EventHandler Handler)
         {
             this.Handler = Handler;
             WebClient downloader = new WebClient();
             downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnDownloadStringCompleted);
-            downloader.DownloadStringAsync(new Uri(ConstFields.PRINTER_LIST_URL));
+            downloader.DownloadStringAsync(new Uri(url));
         }
         private void OnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {

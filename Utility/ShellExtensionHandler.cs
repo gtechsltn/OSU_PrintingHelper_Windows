@@ -11,7 +11,7 @@ namespace Utility
 {
     public class ShellExtensionHandler
     {
-        private static string GetRegAsmPath() 
+        private static string GetRegAsmPath()
         {
             if (System.Environment.Is64BitOperatingSystem)
             {
@@ -19,14 +19,27 @@ namespace Utility
             }
             return ConstFields.REGASM_PATH_32BIT;
         }
+        public static bool CheckInstallationStatus()
+        {
+            try
+            {
+                Type comType = Type.GetTypeFromCLSID(new Guid(ConstFields.SHELL_EXT_GUID));
+                var instance = Activator.CreateInstance(comType);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static void Install()
         {
-            Debug.WriteLine(GetRegAsmPath());
             Process p = new Process();
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.FileName = GetRegAsmPath();
-            p.StartInfo.Arguments =  ConstFields.PRINTER_SHELL_EXT_FILE_NAME + " /codebase";
+            p.StartInfo.Arguments = ConstFields.PRINTER_SHELL_EXT_FILE_NAME + " /codebase";
             p.Start();
         }
         public static void Uninstall()
@@ -40,7 +53,6 @@ namespace Utility
 
             RestartExplorer();
         }
-
         public static void RestartExplorer()
         {
             Process p = new Process();
