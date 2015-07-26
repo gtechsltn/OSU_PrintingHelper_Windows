@@ -142,7 +142,9 @@ Please re-check your username and password or the Internet connection.</value>
     <value>Please wait before when checking your username and password.</value>
   </data>
   <data name="NonAdminPrompt" xml:space="preserve">
-    <value>Please run this app with administrator permission.</value>
+    <value>Please run this app with administrator permission.
+Please read the README before opening this app.</value>
+    <comment> r</comment>
   </data>
   <data name="OptionFailedSavedPrompt" xml:space="preserve">
     <value>A Problem was encoutered while saving.

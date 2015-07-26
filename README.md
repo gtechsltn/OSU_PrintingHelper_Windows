@@ -10,6 +10,10 @@ Besides, it also support ECE department.
 
 [Download Here](http://web.cse.ohio-state.edu/~zhante/OSU-PrintingHelper-Windows.zip).
 
+## Attention
+
+**Please make sure you click "Uninstall" button before removing the whole application to trash bin.**
+
 ## Installation steps
 1. Run Printer_GUI.exe as **administator**.
 2. Click the checkboxs for all the printers that you would like to load.

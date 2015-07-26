@@ -127,7 +127,8 @@ namespace Printer_GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please run this app with administrator permission..
+        ///   Looks up a localized string similar to Please run this app with administrator permission.
+        ///Please read the README before opening this app..
         /// </summary>
         internal static string NonAdminPrompt {
             get {
