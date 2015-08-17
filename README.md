@@ -48,7 +48,7 @@ If you do not have it, please download it at [Microsoft official website](http:/
 
 ## Availability on Other Platforms
 ###&nbsp;&nbsp;&nbsp;&nbsp;Android 
-&nbsp;&nbsp;&nbsp;&nbsp;Google Play: coming soon<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Google Play: [link](https://play.google.com/store/apps/details?id=com.chen.OSU_Printing_Helper) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;Github: https://github.com/coderush6145/OSU_PrintingHelper_Android/
 ###&nbsp;&nbsp;&nbsp;&nbsp;iOS
 &nbsp;&nbsp;&nbsp;&nbsp;Apple Store: coming soon<br />

@@ -27,8 +27,6 @@ namespace Printer_GUI
 
         public MainForm()
         {
-            PrivilegeCheck();
-
             if (!ShellExtensionHandler.CheckInstallationStatus())
             {
                 ShellExtensionHandler.Install();
@@ -40,14 +38,6 @@ namespace Printer_GUI
                     ConstFields.PRINTER_LIST_URL, DownloadCompletedEventHandler);
 
             InitializeComponent();
-        }
-        private void PrivilegeCheck()
-        {
-            if (!PrivilegeChecker.IsAdministrator())
-            {
-                MessageBox.Show(this, Resources.NonAdminPrompt);
-                this.Close();
-            }
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
