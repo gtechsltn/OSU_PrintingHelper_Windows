@@ -35,7 +35,7 @@ Windows XP SP3 x64</br>
 Windows 7  SP1 x86</br>
 Windows 7  SP1 x64</br>
 Windows 8  x64</br>
-Windows 10 Preview x64 (Build 10130) </br>
+Windows 10 x64</br>
 
 ## Supported Operating System
 
@@ -48,11 +48,14 @@ If you do not have it, please download it at [Microsoft official website](http:/
 
 ## Availability on Other Platforms
 ###&nbsp;&nbsp;&nbsp;&nbsp;Android 
-&nbsp;&nbsp;&nbsp;&nbsp;Google Play: [link](https://play.google.com/store/apps/details?id=com.chen.OSU_Printing_Helper) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;Github: https://github.com/coderush6145/OSU_PrintingHelper_Android/
+&nbsp;&nbsp;&nbsp;&nbsp;[Google Play](https://play.google.com/store/apps/details?id=com.chen.OSU_Printing_Helper) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Github](https://github.com/coderush6145/OSU_PrintingHelper_Android/)
 ###&nbsp;&nbsp;&nbsp;&nbsp;iOS
-&nbsp;&nbsp;&nbsp;&nbsp;Apple Store: coming soon<br />
-&nbsp;&nbsp;&nbsp;&nbsp;Github: https://github.com/wangdingkang/OSU_PrintingHelper_iOS
+&nbsp;&nbsp;&nbsp;&nbsp;[Apple Store](https://itunes.apple.com/us/app/osu-printer/id1023139039?ls=1&mt=8) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Github](https://github.com/wangdingkang/OSU_PrintingHelper_iOS)
+###&nbsp;&nbsp;&nbsp;&nbsp;Mac
+&nbsp;&nbsp;&nbsp;&nbsp;[Zip Format](http://web.cse.ohio-state.edu/~zhante/OSU-PrintingHelper-Mac.zip) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Github](https://github.com/shao158/OSU_Printer_Mac_Version)
 
 ## Version history
 
@@ -66,6 +69,7 @@ If you do not have it, please download it at [Microsoft official website](http:/
 0.3.3 Minor changes on utility <br/>
 0.3.4 Add async method for validating username and password. <br/>
 0.3.5 Change the installation method to auto. <br/>
+0.3.6 Add checker for printing request response. <br/>
 
 ## Credit
 Author: Te Zhang <br/>

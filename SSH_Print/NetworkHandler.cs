@@ -104,10 +104,10 @@ namespace SSH_Print
                 {
                     client.Connect();
                     string commmand = string.Join("; ", CommandsList);
-                    Console.WriteLine(commmand);
+                    Console.WriteLine("Executing printing command, waiting for response...");
                     SshCommand result = client.RunCommand(commmand);
                     CommandsList.Clear();
-                    Console.WriteLine(result.Result);
+                    Console.WriteLine("Response message is: " + result.Result);
                     client.Disconnect();
                 }
             }

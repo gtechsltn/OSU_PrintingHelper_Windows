@@ -88,6 +88,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\printer.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\ModernUI.1.3.0.0\lib\net40\MetroFramework.dll</HintPath>
@@ -180,6 +183,7 @@
     <EmbeddedResource Include="UserCredentialsForm.resx">
       <DependentUpon>UserCredentialsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
