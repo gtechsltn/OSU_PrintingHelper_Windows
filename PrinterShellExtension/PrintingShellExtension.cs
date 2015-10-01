@@ -32,8 +32,8 @@ namespace PrinterShellExtension
         private string _verb = "OSU_Printers";
         private string _verbCanonicalName = "OSU_Printers";
         private string _verbHelpText = "OSU_Printers";
-        
-        private IList<IDictionary<string, string>> _printerList;
+
+        private IList<Dictionary<string, string>> _printerList;
 
         public FileContextMenuExt()
         {
@@ -113,7 +113,7 @@ namespace PrinterShellExtension
         {
             if (pDataObj == IntPtr.Zero)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Pointer is zero.");
             }
 
             FORMATETC fe = new FORMATETC();
@@ -136,7 +136,7 @@ namespace PrinterShellExtension
                 IntPtr hDrop = stm.unionmember;
                 if (hDrop == IntPtr.Zero)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Pointer is zero.");
                 }
 
                 // Determine how many files are involved in this operation.
@@ -408,22 +408,19 @@ namespace PrinterShellExtension
 
         #region Utility Method
 
-        private IDictionary<string, string> LocationToName =
-            new Dictionary<string, string>();
-
-        private string GetRunningDirectory()
+        private static string GetRunningDirectory()
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         }
-        private string GetConfigPath()
+        private static string GetConfigPath()
         {
             return Path.Combine(GetRunningDirectory(), ConstFields.CONFIGRATION_FILE_NAME);
         }
-        private string GetSshPath()
+        private static string GetSshPath()
         {
             return Path.Combine(GetRunningDirectory(), ConstFields.SSH_PRINT_FILE_NAME);
         }
-        private IList<IDictionary<string, string>> LoadAllPrinters()
+        private static IList<Dictionary<string, string>> LoadAllPrinters()
         {
             ConfigManager loader = new ConfigManager(GetConfigPath());
             return loader.GetAllLoadedPrinters();

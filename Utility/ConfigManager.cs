@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace Utility
 {
-    public class ConfigManager
+    public class ConfigManager : Interfaces.IConfigManager
     {
         public static readonly ISet<string> VAILD_PRINTER_ATTRIBUTES = new HashSet<string>(
             new List<string> { "Name", "Location", "Type", "Department" });
@@ -41,12 +41,16 @@ namespace Utility
             }
         }
 
-        private void DownloadConfig(string url, string path)
+        private static void DownloadConfig(string url, string path)
         {
             try
             {
                 string xmlString = new WebClient().DownloadString(url);
                 System.IO.File.WriteAllText(path, xmlString);
+            }
+            catch (IOException)
+            {
+                Debug.WriteLine("Error writing file.");
             }
             catch (Exception ex)
             {
@@ -180,7 +184,7 @@ namespace Utility
             }
             return commands;
         }
-        public bool SaveEnabledPrintingOptions(ISet<string> pptionName)
+        public bool SaveEnabledPrintingOptions(ISet<string> optionName)
         {
             try
             {
@@ -188,7 +192,7 @@ namespace Utility
                 XmlNode PrintingOptions = _doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
                 foreach (XmlNode option in PrintingOptions.ChildNodes)
                 {
-                    bool val = pptionName.Contains(option.Attributes["Name"].Value);
+                    bool val = optionName.Contains(option.Attributes["Name"].Value);
                     option.Attributes["Enabled"].Value = val.ToString();
                 }
                 _doc.Save(this._configPath);
@@ -201,16 +205,16 @@ namespace Utility
             return true;
         }
 
-        public IList<IDictionary<string, string>> GetAllLoadedPrinters()
+        public IList<Dictionary<string, string>> GetAllLoadedPrinters()
         {
-            IList<IDictionary<string, string>> ret = new List<IDictionary<string, string>>();
+            IList<Dictionary<string, string>> ret = new List<Dictionary<string, string>>();
             try
             {
                 _doc.Load(_configPath);
                 XmlNode loadedPrinters = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
                 foreach (XmlNode XmlPrinter in loadedPrinters.ChildNodes)
                 {
-                    IDictionary<string, string> printer =
+                    Dictionary<string, string> printer =
                         new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     for (int i = 0; i < XmlPrinter.Attributes.Count; ++i)
                     {
@@ -228,7 +232,7 @@ namespace Utility
             }
             return ret;
         }
-        public bool SaveAllLoadedPrinters(IList<IDictionary<string, string>> Printers)
+        public bool SaveAllLoadedPrinters(IList<Dictionary<string, string>> printers)
         {
             try
             {
@@ -236,7 +240,7 @@ namespace Utility
                 XmlNode allPrinters = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
                 allPrinters.RemoveAll();
 
-                foreach (IDictionary<string, string> p in Printers)
+                foreach (IDictionary<string, string> p in printers)
                 {
                     XmlElement element = _doc.CreateElement("printer", null);
                     if (p.ContainsKey("Name"))
@@ -329,7 +333,7 @@ namespace Utility
             if (userCredentials.ContainsKey(department))
             {
                 string password = userCredentials[department].Item2;
-                if (!password.Equals(""))
+                if (password.Length > 0)
                 {
                     password = CredentialsManager.DecryptText(password);
                 }
@@ -340,7 +344,7 @@ namespace Utility
 
         public bool SaveCredentials(string department, string username, string password)
         {
-            if (password.Equals(""))
+            if (password.Length == 0)
             {
                 return false;                
             }
@@ -352,7 +356,7 @@ namespace Utility
                 XmlNodeList userNodes = _doc.SelectNodes(select);
 
                 XmlNode userNode = userNodes[0];
-                XmlAttribute departmentAttribute = userNode.Attributes["Department"];
+
                 userNode.SelectNodes("username").Item(0).InnerText = username;
                 userNode.SelectNodes("password").Item(0).InnerText = password;
 

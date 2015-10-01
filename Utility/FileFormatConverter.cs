@@ -7,21 +7,20 @@ using System.Text;
 
 namespace SSH_Print
 {    
-    public class FileFormatConverter
+    public static class FileFormatConverter
     {
         public static string GetFileNameAsPdf(string fileName)
         {
             string nameWithoutExtentsion = Path.GetFileNameWithoutExtension(fileName);
             return nameWithoutExtentsion + ".pdf";
         }
-        public static List<string> GetChangeFileFormatCommand(string fileName)
+        public static IList<string> GetChangeFileFormatCommand(string fileName)
         {
-            List<string> ret = new List<string>();
+            IList<string> ret = new List<string>();
 
             string extension = Path.GetExtension(fileName).ToLower();
 
-            //TODO: Contacting ECE for bug fixes.
-            string convertCommand = @"soffice --headless --convert-to pdf ""{0}""; ";
+            string convertCommand = @"oowriter -convert-to pdf:writer_pdf_Export ""{0}""; ";
             string removeCommand = @"rm -f ""{0}""";
 
             if (ConstFields.SUPPORTED_CONVERTING_TO_PDF_EXTENSION.Contains(extension))

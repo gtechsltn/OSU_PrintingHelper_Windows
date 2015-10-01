@@ -249,8 +249,8 @@ namespace PrinterShellExtension
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct POINT
     {
-        public int X;
-        public int Y;
+        public int X {get; set;}
+        public int Y {get; set;}
     }
 
     internal enum CLIPFORMAT : uint

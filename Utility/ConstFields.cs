@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Utility
 {
-    public class ConstFields
+    public static class ConstFields
     {
         public const string WEBSITE_DIRECTORY = "http://web.cse.ohio-state.edu/~zhante/";
         public const string LEGACY_REGISTRY_ROOT = "*\\shell\\OSU Printer";

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Utility
 {
-    public class PrivilegeChecker
+    public static class PrivilegeChecker
     {
         public static bool IsAdministrator()
         {

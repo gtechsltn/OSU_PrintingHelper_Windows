@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Utility
 {
-    public class ShellExtensionHandler
+    public static class ShellExtensionHandler
     {
         private static string GetRegAsmPath()
         {
@@ -24,7 +24,7 @@ namespace Utility
             try
             {
                 Type comType = Type.GetTypeFromCLSID(new Guid(ConstFields.SHELL_EXT_GUID));
-                var instance = Activator.CreateInstance(comType);
+                Activator.CreateInstance(comType);
             }
             catch (Exception)
             {

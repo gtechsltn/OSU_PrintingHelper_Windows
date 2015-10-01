@@ -66,11 +66,6 @@ namespace SSH_Print
                 Console.WriteLine("Authentication of SSH session failed.");
                 return false;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return false;
-            }
             return true;
         }
         public void PrintFile(string fileName, string printerName)
@@ -107,13 +102,32 @@ namespace SSH_Print
                     Console.WriteLine("Executing printing command, waiting for response...");
                     SshCommand result = client.RunCommand(commmand);
                     _commandsList.Clear();
-                    Console.WriteLine("Response message is: " + result.Result);
+
+                    string resultString = result.Result.Trim('\n', '\r', ' ');
+                    Console.WriteLine("Response message is: " + resultString);
+
+                    if (resultString.Contains("request id"))
+                    {
+                        Console.WriteLine("Your documents printing job is SUCCESSFULLY requested.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("FAILED to executing printing command.");
+                    }
                     client.Disconnect();
                 }
             }
-            catch (Exception ex)
+            catch (Renci.SshNet.Common.SshConnectionException)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Cannot connect to the server.");
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
+                Console.WriteLine("Unable to establish the socket.");
+            }
+            catch (Renci.SshNet.Common.SshAuthenticationException)
+            {
+                Console.WriteLine("Authentication of SSH session failed.");
             }
             Console.ReadLine();
         }

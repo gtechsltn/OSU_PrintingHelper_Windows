@@ -22,7 +22,7 @@ namespace Printer_GUI
     public partial class MainForm : MetroForm
     {
         private ConfigManager loader;
-        private IList<IDictionary<string, string>> printerInfo;
+        private IList<Dictionary<string, string>> _printerInfo;
         private event EventHandler DownloadCompletedEventHandler;
 
         public MainForm()
@@ -33,38 +33,37 @@ namespace Printer_GUI
             }
 
             DownloadCompletedEventHandler += OnPrinterInformationDownloaded;
-            JsonDownloader<IList<IDictionary<string, string>>> Downloader
-                = new JsonDownloader<IList<IDictionary<string, string>>>(
-                    ConstFields.PRINTER_LIST_URL, DownloadCompletedEventHandler);
+            new JsonDownloader<IList<Dictionary<string, string>>>(
+                new Uri(ConstFields.PRINTER_LIST_URL), DownloadCompletedEventHandler);
 
             InitializeComponent();
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
             loader = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
-            if (printerInfo != null)
+            if (_printerInfo != null)
             {
-                UpdateGridView(printerInfo);
+                UpdateGridView(_printerInfo);
             }
         }
         private void OnPrinterInformationDownloaded(object sender, EventArgs e)
         {
-            printerInfo = (IList<IDictionary<string, string>>)sender;
+            _printerInfo = (IList<Dictionary<string, string>>)sender;
             if (this.dataGridView != null)
             {
-                UpdateGridView(printerInfo);
+                UpdateGridView(_printerInfo);
             }
         }
         private void button_ApplyChange_Click(object sender, EventArgs e)
         {
-            IList<IDictionary<string, string>> confirmedPrinter =
-                new List<IDictionary<string, string>>();
+            IList<Dictionary<string, string>> confirmedPrinter =
+                new List<Dictionary<string, string>>();
             for (int i = 0; i < dataGridView.RowCount; ++i)
             {
                 DataGridViewRow row = dataGridView.Rows[i];
                 if (!row.Cells[row.Cells.Count - 1].Value.Equals(new Boolean()))
                 {
-                    confirmedPrinter.Add(printerInfo[i]);
+                    confirmedPrinter.Add(_printerInfo[i]);
                 }
             }
             loader.SaveAllLoadedPrinters(confirmedPrinter);
@@ -101,12 +100,12 @@ namespace Printer_GUI
             MetroMessageBox.Show(this, Resources.ApplicationUninstalledPrompt);
             this.Close();
         }
-        public void UpdateGridView(IList<IDictionary<string, string>> printerInfo)
+        public void UpdateGridView(IList<Dictionary<string, string>> printerInfo)
         {
             this.button_ApplyChange.Enabled = true;
             dataGridView.Rows.Clear();
 
-            IList<IDictionary<string, string>> loadedPrinters = loader.GetAllLoadedPrinters();
+            IList<Dictionary<string, string>> loadedPrinters = loader.GetAllLoadedPrinters();
             ISet<string> printerNameSet = new HashSet<string>();
             foreach (IDictionary<string, string> p in loadedPrinters)
             {

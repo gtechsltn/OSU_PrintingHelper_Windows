@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace Utility
 {
-    public class CredentialsManager
+    public static class CredentialsManager
     {
         /*
          * Const fields.
@@ -22,20 +22,16 @@ namespace Utility
         {
             RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
             ICryptoTransform encryptor = rc2CSP.CreateEncryptor(Convert.FromBase64String(C_KEY), Convert.FromBase64String(C_IV));
-            using (MemoryStream msEncrypt = new MemoryStream())
-            {
-                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                {
-                    byte[] toEncrypt = Encoding.Unicode.GetBytes(openText);
+            MemoryStream msEncrypt = new MemoryStream();
+            CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+            byte[] toEncrypt = Encoding.Unicode.GetBytes(openText);
 
-                    csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
-                    csEncrypt.FlushFinalBlock();
+            csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
+            csEncrypt.FlushFinalBlock();
 
-                    byte[] encrypted = msEncrypt.ToArray();
+            byte[] encrypted = msEncrypt.ToArray();
 
-                    return Convert.ToBase64String(encrypted);
-                }
-            }
+            return Convert.ToBase64String(encrypted);
         }
 
         public static string DecryptText(string encryptedText)
@@ -44,27 +40,22 @@ namespace Utility
             {
                 RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
                 ICryptoTransform decryptor = rc2CSP.CreateDecryptor(Convert.FromBase64String(C_KEY), Convert.FromBase64String(C_IV));
-                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(encryptedText)))
+                MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(encryptedText));
+                CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+                List<Byte> bytes = new List<byte>();
+                int b;
+                do
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    b = csDecrypt.ReadByte();
+                    if (b != -1)
                     {
-                        List<Byte> bytes = new List<byte>();
-                        int b;
-                        do
-                        {
-                            b = csDecrypt.ReadByte();
-                            if (b != -1)
-                            {
-                                bytes.Add(Convert.ToByte(b));
-                            }
-
-                        }
-                        while (b != -1);
-
-                        return Encoding.Unicode.GetString(bytes.ToArray());
+                        bytes.Add(Convert.ToByte(b));
                     }
-                }
-            } 
+
+                } while (b != -1);
+
+                return Encoding.Unicode.GetString(bytes.ToArray());
+            }
             catch (Exception)
             {
                 return "";

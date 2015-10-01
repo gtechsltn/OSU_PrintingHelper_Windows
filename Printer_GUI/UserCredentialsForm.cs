@@ -18,16 +18,16 @@ namespace Printer_GUI
 {
     public partial class UserCredentialsForm : MetroForm
     {
-        private ConfigManager manager;
-        private SSH_Print.NetworkHandler handler;
+        private ConfigManager _manager;
+        private SSH_Print.NetworkHandler _handler;
 
-        private string department;
-        private string username;
-        private string password;
+        private string _department;
+        private string _username;
+        private string _password;
 
         public UserCredentialsForm(ConfigManager manager)
         {
-            this.manager = manager;
+            this._manager = manager;
             InitializeComponent();
             textBox_Password.PasswordChar = '*';
             comboBox_Department.SelectedIndex = 0;
@@ -35,18 +35,18 @@ namespace Printer_GUI
 
         private async void button_StorePassword_Click(object sender, EventArgs e)
         {
-            if (handler != null)
+            if (_handler != null)
             {
                 return;
             }
 
-            department = comboBox_Department.Text;
-            username = textBox_Username.Text;
-            password = textBox_Password.Text;
-            IDictionary<string, string[]> info = manager.GetServerInfo();
-            string address = info[department][0];
-            handler = new SSH_Print.NetworkHandler(address, username, password);
-            if (!(await handler.CheckConnectionAsync())) 
+            _department = comboBox_Department.Text;
+            _username = textBox_Username.Text;
+            _password = textBox_Password.Text;
+            IDictionary<string, string[]> info = _manager.GetServerInfo();
+            string address = info[_department][0];
+            _handler = new SSH_Print.NetworkHandler(address, _username, _password);
+            if (!(await _handler.CheckConnectionAsync())) 
             {
                 MetroMessageBox.Show(this, Resources.CredentialIncorrectPrompt);
             }
@@ -54,20 +54,20 @@ namespace Printer_GUI
             {
                 SaveCredentials();
             }
-            handler = null;
+            _handler = null;
         }
 
         private void comboBox_Department_SelectedIndexChanged(object sender, EventArgs e)
         {
             button_StorePassword.Enabled = true;
             string department = comboBox_Department.Text;
-            textBox_Username.Text = manager.GetUserName(department);
-            textBox_Password.Text = manager.GetPassword(department);
+            textBox_Username.Text = _manager.GetUserName(department);
+            textBox_Password.Text = _manager.GetPassword(department);
         }
 
         private void SaveCredentials()
         {
-            if (manager.SaveCredentials(department, username, password))
+            if (_manager.SaveCredentials(_department, _username, _password))
             {
                 MetroMessageBox.Show(this, Resources.CredentialSuccessfulSavdPrompt);
             }
