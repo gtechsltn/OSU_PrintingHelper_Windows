@@ -19,35 +19,36 @@ namespace PrinterShellExtension
     [Guid(ConstFields.SHELL_EXT_GUID), ComVisible(true)]
     public class FileContextMenuExt : IShellExtInit, IContextMenu
     {
-        private const string RegistryValue = "OSU_Printing_App.PrinterShellExtension";
+        private const string REGISTRY_VALUE = "OSU_Printing_App.PrinterShellExtension";
         private const int MAX_PATH_LENGTH = 260;
 
         // The name of the selected file.
-        private string selectedFile;
+        private string _selectedFile;
 
-        private string menuText = "OSU Printers";
-        private IntPtr menuBmp = IntPtr.Zero;
-        private string verb = "OSU_Printers";
-        private string verbCanonicalName = "OSU_Printers";
-        private string verbHelpText = "OSU_Printers";
         private uint IDM_DISPLAY = 0;
+
+        private string _menuText = "OSU Printers";
+        private IntPtr _menuBmp = IntPtr.Zero;
+        private string _verb = "OSU_Printers";
+        private string _verbCanonicalName = "OSU_Printers";
+        private string _verbHelpText = "OSU_Printers";
         
-        private IList<IDictionary<string, string>> printerList;
+        private IList<IDictionary<string, string>> _printerList;
 
         public FileContextMenuExt()
         {
             // Load the bitmap for the menu item.
             Bitmap bmp = Resources.Logo;
             bmp.MakeTransparent(bmp.GetPixel(0, 0));
-            this.menuBmp = bmp.GetHbitmap();
+            this._menuBmp = bmp.GetHbitmap();
         }
 
         ~FileContextMenuExt()
         {
-            if (this.menuBmp != IntPtr.Zero)
+            if (this._menuBmp != IntPtr.Zero)
             {
-                NativeMethods.DeleteObject(this.menuBmp);
-                this.menuBmp = IntPtr.Zero;
+                NativeMethods.DeleteObject(this._menuBmp);
+                this._menuBmp = IntPtr.Zero;
             }
         }
 
@@ -55,7 +56,7 @@ namespace PrinterShellExtension
         {
             ConfigManager loader = new ConfigManager(GetConfigPath());
             loader.MovePrinterToFront(position);
-            Process.Start(GetSshPath(), '"' + selectedFile + "\" " + printerList[position]["Name"]);
+            Process.Start(GetSshPath(), '"' + _selectedFile + "\" " + _printerList[position]["Name"]);
         }
 
 
@@ -67,7 +68,7 @@ namespace PrinterShellExtension
             try
             {
                 ShellExtReg.RegisterShellExtContextMenuHandler(t.GUID, "*",
-                    RegistryValue);
+                    REGISTRY_VALUE);
             }
             catch (Exception ex)
             {
@@ -152,7 +153,7 @@ namespace PrinterShellExtension
                     {
                         Marshal.ThrowExceptionForHR(WinError.E_FAIL);
                     }
-                    this.selectedFile = fileName.ToString();
+                    this._selectedFile = fileName.ToString();
                 }
                 else
                 {
@@ -218,9 +219,9 @@ namespace PrinterShellExtension
 
             mii.wID = idCmdFirst + IDM_DISPLAY;
             mii.fType = MFT.MFT_STRING;
-            mii.dwTypeData = this.menuText;
+            mii.dwTypeData = this._menuText;
             mii.fState = MFS.MFS_ENABLED;
-            mii.hbmpItem = this.menuBmp;
+            mii.hbmpItem = this._menuBmp;
             mii.hSubMenu = hSubmenu;
 
             if (!NativeMethods.InsertMenuItem(hMenu, iMenu, true, ref mii))
@@ -229,14 +230,14 @@ namespace PrinterShellExtension
             }
 
             // Get all loaded printers.
-            printerList = LoadAllPrinters();
-            for (int i = 0; i < printerList.Count; ++i)
+            _printerList = LoadAllPrinters();
+            for (int i = 0; i < _printerList.Count; ++i)
             {
                 // Use InsertMenu to add submenu items.
                 if (!NativeMethods.InsertMenu(
                     hSubmenu, (uint)i,
                     0x00000400, uID++,
-                    printerList[i]["Location"]))
+                    _printerList[i]["Location"]))
                 {
                     return Marshal.GetHRForLastWin32Error();
                 }
@@ -295,7 +296,7 @@ namespace PrinterShellExtension
             if (!isUnicode && NativeMethods.HighWord(ici.verb.ToInt32()) != 0)
             {
                 // Is the verb supported by this context menu extension?
-                if (Marshal.PtrToStringAnsi(ici.verb) == this.verb)
+                if (Marshal.PtrToStringAnsi(ici.verb) == this._verb)
                 {
                     return;
                 }
@@ -313,7 +314,7 @@ namespace PrinterShellExtension
             else if (isUnicode && NativeMethods.HighWord(iciex.verbW.ToInt32()) != 0)
             {
                 // Is the verb supported by this context menu extension?
-                if (Marshal.PtrToStringUni(iciex.verbW) == this.verb)
+                if (Marshal.PtrToStringUni(iciex.verbW) == this._verb)
                 {
                     return;
                 }
@@ -333,7 +334,7 @@ namespace PrinterShellExtension
                 // Is the command identifier offset supported by this context menu 
                 // extension?
                 int Count = NativeMethods.LowWord(ici.verb.ToInt32());
-                if (0 <= Count && Count < printerList.Count)
+                if (0 <= Count && Count < _printerList.Count)
                 {
                     ExecuteCommand(ici.verb.ToInt32());
                 }
@@ -377,26 +378,26 @@ namespace PrinterShellExtension
                 switch ((GCS)uFlags)
                 {
                     case GCS.GCS_VERBW:
-                        if (this.verbCanonicalName.Length > cchMax - 1)
+                        if (this._verbCanonicalName.Length > cchMax - 1)
                         {
                             Marshal.ThrowExceptionForHR(WinError.STRSAFE_E_INSUFFICIENT_BUFFER);
                         }
                         else
                         {
                             pszName.Clear();
-                            pszName.Append(this.verbCanonicalName);
+                            pszName.Append(this._verbCanonicalName);
                         }
                         break;
 
                     case GCS.GCS_HELPTEXTW:
-                        if (this.verbHelpText.Length > cchMax - 1)
+                        if (this._verbHelpText.Length > cchMax - 1)
                         {
                             Marshal.ThrowExceptionForHR(WinError.STRSAFE_E_INSUFFICIENT_BUFFER);
                         }
                         else
                         {
                             pszName.Clear();
-                            pszName.Append(this.verbHelpText);
+                            pszName.Append(this._verbHelpText);
                         }
                         break;
                 }

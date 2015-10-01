@@ -11,23 +11,25 @@ namespace SSH_Print
     {
         public static string GetFileNameAsPdf(string fileName)
         {
-            string NameWithoutExtentsion = Path.GetFileNameWithoutExtension(fileName);
-            return NameWithoutExtentsion + ".pdf";
+            string nameWithoutExtentsion = Path.GetFileNameWithoutExtension(fileName);
+            return nameWithoutExtentsion + ".pdf";
         }
         public static List<string> GetChangeFileFormatCommand(string fileName)
         {
             List<string> ret = new List<string>();
 
             string extension = Path.GetExtension(fileName).ToLower();
-            string ConvertCommand = @"soffice --headless --convert-to pdf ""{0}""; ";
-            string RemoveCommand = @"rm -f ""{0}""";
+
+            //TODO: Contacting ECE for bug fixes.
+            string convertCommand = @"soffice --headless --convert-to pdf ""{0}""; ";
+            string removeCommand = @"rm -f ""{0}""";
 
             if (ConstFields.SUPPORTED_CONVERTING_TO_PDF_EXTENSION.Contains(extension))
             {
-                ConvertCommand = String.Format(ConvertCommand, fileName);
-                RemoveCommand = String.Format(RemoveCommand, GetFileNameAsPdf(fileName));
-                ret.Add(ConvertCommand);
-                ret.Add(RemoveCommand);
+                convertCommand = String.Format(convertCommand, fileName);
+                removeCommand = String.Format(removeCommand, GetFileNameAsPdf(fileName));
+                ret.Add(convertCommand);
+                ret.Add(removeCommand);
             }
             return ret;
         }

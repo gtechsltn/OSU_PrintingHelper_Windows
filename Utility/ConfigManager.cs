@@ -28,14 +28,14 @@ namespace Utility
             {"address", 0}, {"username", 1}, {"password", 2}
         };
 
-        private string ConfigPath;
-        XmlDocument doc;
+        private string _configPath;
+        XmlDocument _doc;
 
         public ConfigManager(string filename)
         {
-            this.ConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
-            this.doc = new XmlDocument();
-            if (!File.Exists(this.ConfigPath))
+            this._configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
+            this._doc = new XmlDocument();
+            if (!File.Exists(this._configPath))
             {
                 DownloadConfig(ConstFields.CONFIGRATION_FILE_URL, filename);
             }
@@ -64,8 +64,8 @@ namespace Utility
                 new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase);
             try
             {
-                doc.Load(ConfigPath);
-                XmlNodeList userNodes = doc.SelectNodes(XML_SERVER_INFO_LOCATION);
+                _doc.Load(_configPath);
+                XmlNodeList userNodes = _doc.SelectNodes(XML_SERVER_INFO_LOCATION);
                 foreach (XmlNode userNode in userNodes)
                 {
                     string department = userNode.Attributes["Department"].Value;
@@ -121,8 +121,8 @@ namespace Utility
                 new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode userNodes = doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
+                _doc.Load(_configPath);
+                XmlNode userNodes = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
                 foreach (XmlNode userNode in userNodes.ChildNodes)
                 {
                     string department = userNode.Attributes["Department"].Value;
@@ -140,37 +140,37 @@ namespace Utility
 
         public IList<Tuple<string, bool>> GetAllPrintingOptions()
         {
-            var Commands = new List<Tuple<string, bool>>();
+            var commands = new List<Tuple<string, bool>>();
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode PrintingOptions = doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
-                foreach (XmlNode option in PrintingOptions.ChildNodes)
+                _doc.Load(_configPath);
+                XmlNode printingOptions = _doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
+                foreach (XmlNode option in printingOptions.ChildNodes)
                 {
-                    var OptionTuple = new Tuple<string, bool>(
+                    var optionTuple = new Tuple<string, bool>(
                         option.Attributes["Name"].Value, Boolean.Parse(option.Attributes["Enabled"].Value));
-                    Commands.Add(OptionTuple);
+                    commands.Add(optionTuple);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-            return Commands;
+            return commands;
         }
         public IList<string> GetEnabledPrintingOptions()
         {
-            IList<string> Commands = new List<string>();
+            IList<string> commands = new List<string>();
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode PrintingOptions = doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
+                _doc.Load(_configPath);
+                XmlNode printingOptions = _doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
 
-                foreach (XmlNode option in PrintingOptions.ChildNodes)
+                foreach (XmlNode option in printingOptions.ChildNodes)
                 {
                     if (Boolean.Parse(option.Attributes["Enabled"].Value))
                     {
-                        Commands.Add(option.InnerText);
+                        commands.Add(option.InnerText);
                     }
                 }
             }
@@ -178,20 +178,20 @@ namespace Utility
             {
                 Console.WriteLine(ex);
             }
-            return Commands;
+            return commands;
         }
-        public bool SaveEnabledPrintingOptions(ISet<string> OptionName)
+        public bool SaveEnabledPrintingOptions(ISet<string> pptionName)
         {
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode PrintingOptions = doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
+                _doc.Load(_configPath);
+                XmlNode PrintingOptions = _doc.SelectNodes(PRINTING_OPTION_LOCATION)[0];
                 foreach (XmlNode option in PrintingOptions.ChildNodes)
                 {
-                    bool val = OptionName.Contains(option.Attributes["Name"].Value);
+                    bool val = pptionName.Contains(option.Attributes["Name"].Value);
                     option.Attributes["Enabled"].Value = val.ToString();
                 }
-                doc.Save(this.ConfigPath);
+                _doc.Save(this._configPath);
             }
             catch (Exception ex)
             {
@@ -206,9 +206,9 @@ namespace Utility
             IList<IDictionary<string, string>> ret = new List<IDictionary<string, string>>();
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode LoadedPrinters = doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
-                foreach (XmlNode XmlPrinter in LoadedPrinters.ChildNodes)
+                _doc.Load(_configPath);
+                XmlNode loadedPrinters = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
+                foreach (XmlNode XmlPrinter in loadedPrinters.ChildNodes)
                 {
                     IDictionary<string, string> printer =
                         new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -232,13 +232,13 @@ namespace Utility
         {
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode AllPrinters = doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
-                AllPrinters.RemoveAll();
+                _doc.Load(_configPath);
+                XmlNode allPrinters = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
+                allPrinters.RemoveAll();
 
                 foreach (IDictionary<string, string> p in Printers)
                 {
-                    XmlElement element = doc.CreateElement("printer", null);
+                    XmlElement element = _doc.CreateElement("printer", null);
                     if (p.ContainsKey("Name"))
                     {
                         element.InnerText = p["Name"];
@@ -247,9 +247,9 @@ namespace Utility
                     {
                         element.SetAttribute(pair.Key, null, pair.Value);
                     }
-                    AllPrinters.AppendChild(element);
+                    allPrinters.AppendChild(element);
                 }
-                doc.Save(this.ConfigPath);
+                _doc.Save(this._configPath);
             }
             catch (Exception ex)
             {
@@ -263,13 +263,13 @@ namespace Utility
         {
             try
             {
-                doc.Load(ConfigPath);
-                XmlNode AllPrinters = doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
-                XmlNode Removed = AllPrinters.ChildNodes[PrinterPosition];
-                Removed = AllPrinters.RemoveChild(Removed);
-                AllPrinters.PrependChild(Removed);
+                _doc.Load(_configPath);
+                XmlNode AllPrinters = _doc.SelectNodes(LOADED_PRINTER_LOCATION)[0];
+                XmlNode removed = AllPrinters.ChildNodes[PrinterPosition];
+                removed = AllPrinters.RemoveChild(removed);
+                AllPrinters.PrependChild(removed);
 
-                doc.Save(this.ConfigPath);
+                _doc.Save(this._configPath);
             }
             catch (Exception ex)
             {
@@ -295,8 +295,8 @@ namespace Utility
                 new Dictionary<string, Tuple<string, string>>(StringComparer.OrdinalIgnoreCase);
             try
             {
-                doc.Load(ConfigPath);
-                XmlNodeList userNodes = doc.SelectNodes(XML_SERVER_INFO_LOCATION);
+                _doc.Load(_configPath);
+                XmlNodeList userNodes = _doc.SelectNodes(XML_SERVER_INFO_LOCATION);
                 foreach (XmlNode userNode in userNodes)
                 {
                     string department = userNode.Attributes["Department"].Value;
@@ -347,16 +347,16 @@ namespace Utility
             password = CredentialsManager.EncryptText(password);
             try
             {
-                doc.Load(ConfigPath);
+                _doc.Load(_configPath);
                 string select = XML_SERVER_INFO_LOCATION + "[@Department='" + department + "']";
-                XmlNodeList userNodes = doc.SelectNodes(select);
+                XmlNodeList userNodes = _doc.SelectNodes(select);
 
                 XmlNode userNode = userNodes[0];
                 XmlAttribute departmentAttribute = userNode.Attributes["Department"];
                 userNode.SelectNodes("username").Item(0).InnerText = username;
                 userNode.SelectNodes("password").Item(0).InnerText = password;
 
-                doc.Save(this.ConfigPath);
+                _doc.Save(this._configPath);
             }
             catch (Exception ex)
             {

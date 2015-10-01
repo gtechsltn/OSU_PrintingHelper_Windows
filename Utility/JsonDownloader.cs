@@ -9,10 +9,10 @@ namespace Utility
 {
     public class JsonDownloader<T>
     {
-        private event EventHandler Handler;
-        public JsonDownloader(string url, EventHandler Handler)
+        private event EventHandler _handler;
+        public JsonDownloader(string url, EventHandler handler)
         {
-            this.Handler = Handler;
+            this._handler = handler;
             WebClient downloader = new WebClient();
             downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(OnDownloadStringCompleted);
             downloader.DownloadStringAsync(new Uri(url));
@@ -27,7 +27,7 @@ namespace Utility
         }
         private void FireHandler_PrinterInformation(string info, EventArgs e)
         {
-            Handler(JsonConvert.DeserializeObject<T>(info), e);
+            _handler(JsonConvert.DeserializeObject<T>(info), e);
         }
     }
 }

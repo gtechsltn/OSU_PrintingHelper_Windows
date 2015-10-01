@@ -15,13 +15,13 @@ namespace Utility
         /*
          * Const fields.
          */
-        private const string c_key = "SEVMTE9fV09STEQ=";
-        private const string c_iv = "V0hBVF9ET19ZT1VfV0FOVA==";
+        private const string C_KEY = "SEVMTE9fV09STEQ=";
+        private const string C_IV = "V0hBVF9ET19ZT1VfV0FOVA==";
 
         public static string EncryptText(string openText)
         {
             RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
-            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(Convert.FromBase64String(c_key), Convert.FromBase64String(c_iv));
+            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(Convert.FromBase64String(C_KEY), Convert.FromBase64String(C_IV));
             using (MemoryStream msEncrypt = new MemoryStream())
             {
                 using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
@@ -43,7 +43,7 @@ namespace Utility
             try
             {
                 RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
-                ICryptoTransform decryptor = rc2CSP.CreateDecryptor(Convert.FromBase64String(c_key), Convert.FromBase64String(c_iv));
+                ICryptoTransform decryptor = rc2CSP.CreateDecryptor(Convert.FromBase64String(C_KEY), Convert.FromBase64String(C_IV));
                 using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(encryptedText)))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))

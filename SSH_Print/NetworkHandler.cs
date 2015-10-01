@@ -14,25 +14,25 @@ namespace SSH_Print
 {
     public class NetworkHandler
     {
-        string address;
-        string username;
-        string password;
+        private string _address;
+        private string _username;
+        private string _password;
 
-        IList<string> CommandsList;
+        private IList<string> _commandsList;
         private const string PRINTING_COMMAND_TEMPLATE = @"lp -d {0} ""{1}""";
         private const string REMOVE_COMMAND = @"rm -f ""{0}""";
         private const string CHANGE_DIR_COMMMAND_TEMPLATE = @"cd ""{0}""";
 
         public NetworkHandler(string address, string username, string password)
         {
-            this.address = address;
-            this.username = username;
-            this.password = password;
-            CommandsList = new List<string>();
+            this._address = address;
+            this._username = username;
+            this._password = password;
+            _commandsList = new List<string>();
         }
         public bool UploadFile(string filePath)
         {
-            ConnectionInfo connectionInfo = new PasswordConnectionInfo(address, ConstFields.SFTP_PORT, username, password);
+            ConnectionInfo connectionInfo = new PasswordConnectionInfo(_address, ConstFields.SFTP_PORT, _username, _password);
             try
             {
                 using (var sftp = new SftpClient(connectionInfo))
@@ -73,40 +73,40 @@ namespace SSH_Print
             }
             return true;
         }
-        public void PrintFile(string FileName, string PrinterName)
+        public void PrintFile(string fileName, string printerName)
         {
             string changeDirectoryCommand =
                 String.Format(CHANGE_DIR_COMMMAND_TEMPLATE, ConstFields.TEMP_PRINT_DIRECTORY);
-            CommandsList.Add(changeDirectoryCommand);
+            _commandsList.Add(changeDirectoryCommand);
 
-            IList<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(FileName);
+            IList<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(fileName);
             foreach (string command in ConvertCommandList)
             {
-                CommandsList.Add(command);
+                _commandsList.Add(command);
             }
-            string NameAsPdf = FileName;
+            string NameAsPdf = fileName;
             if (ConvertCommandList.Count > 0)
             {
-                NameAsPdf = FileFormatConverter.GetFileNameAsPdf(FileName);
+                NameAsPdf = FileFormatConverter.GetFileNameAsPdf(fileName);
             }
-            string PrintingCommand = String.Format(PRINTING_COMMAND_TEMPLATE, PrinterName, NameAsPdf);
+            string PrintingCommand = String.Format(PRINTING_COMMAND_TEMPLATE, printerName, NameAsPdf);
             ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
 
             PrintingCommand += (" " + string.Join(" ", manager.GetEnabledPrintingOptions()));
-            CommandsList.Add(PrintingCommand);
+            _commandsList.Add(PrintingCommand);
 
-            string RemoveFileCommand = String.Format(REMOVE_COMMAND, FileName);
-            CommandsList.Add(RemoveFileCommand);
+            string RemoveFileCommand = String.Format(REMOVE_COMMAND, fileName);
+            _commandsList.Add(RemoveFileCommand);
 
             try
             {
-                using (var client = new SshClient(address, username, password))
+                using (var client = new SshClient(_address, _username, _password))
                 {
                     client.Connect();
-                    string commmand = string.Join("; ", CommandsList);
+                    string commmand = string.Join("; ", _commandsList);
                     Console.WriteLine("Executing printing command, waiting for response...");
                     SshCommand result = client.RunCommand(commmand);
-                    CommandsList.Clear();
+                    _commandsList.Clear();
                     Console.WriteLine("Response message is: " + result.Result);
                     client.Disconnect();
                 }
@@ -124,7 +124,7 @@ namespace SSH_Print
             {
                 try
                 {
-                    using (var client = new SshClient(address, username, password))
+                    using (var client = new SshClient(_address, _username, _password))
                     {
                         client.Connect();
                         client.Disconnect();

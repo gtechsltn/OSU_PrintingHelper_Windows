@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSH_Print", "SSH_Print\SSH_Print.csproj", "{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}"
 EndProject
@@ -33,8 +33,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|Win32.Build.0 = Debug|Any CPU
 		{10DC5CCC-7091-4B79-AA3F-3C3C435F90A1}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -72,8 +72,8 @@ Global
 		{1F5A50EA-B363-4D35-B6B4-AC3EEA382374}.Release|x86.Build.0 = Release|x86
 		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Win32.ActiveCfg = Debug|x86
 		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|Win32.Build.0 = Debug|x86
 		{C7F09F8B-D6D0-4AC6-85A1-8BCA416A1B74}.Debug|x64.ActiveCfg = Debug|Any CPU
