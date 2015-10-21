@@ -18,17 +18,11 @@ namespace SSH_Print
         private string _username;
         private string _password;
 
-        private IList<string> _commandsList;
-        private const string PRINTING_COMMAND_TEMPLATE = @"lp -d {0} ""{1}""";
-        private const string REMOVE_COMMAND = @"rm -f ""{0}""";
-        private const string CHANGE_DIR_COMMMAND_TEMPLATE = @"cd ""{0}""";
-
         public NetworkHandler(string address, string username, string password)
         {
             this._address = address;
             this._username = username;
             this._password = password;
-            _commandsList = new List<string>();
         }
         public bool UploadFile(string filePath)
         {
@@ -68,41 +62,40 @@ namespace SSH_Print
             }
             return true;
         }
+
+        string CreatePrintFileCommand(string fileName, string printerName)
+        {
+            ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
+            IList<string>[] commandsArray = new List<string>[]
+            {
+                CommandsFactory.CreateChangeDirectoryCommand(ConstFields.TEMP_PRINT_DIRECTORY),
+                CommandsFactory.CreateChangeFileFormatCommand(fileName),
+                CommandsFactory.CreatePrintingCommand(printerName, fileName, manager.GetEnabledPrintingOptions()),
+                CommandsFactory.CreateRemoveFileCommand(fileName),
+            };
+
+            string command = "";
+            foreach (IList<string> strList in commandsArray)
+            {
+                if (strList.Count > 0)
+                {
+                    command += string.Join("; ", strList);
+                    command += "; ";
+                }
+            }
+            return command;
+        }
+
         public void PrintFile(string fileName, string printerName)
         {
-            string changeDirectoryCommand =
-                String.Format(CHANGE_DIR_COMMMAND_TEMPLATE, ConstFields.TEMP_PRINT_DIRECTORY);
-            _commandsList.Add(changeDirectoryCommand);
-
-            IList<string> ConvertCommandList = FileFormatConverter.GetChangeFileFormatCommand(fileName);
-            foreach (string command in ConvertCommandList)
-            {
-                _commandsList.Add(command);
-            }
-            string NameAsPdf = fileName;
-            if (ConvertCommandList.Count > 0)
-            {
-                NameAsPdf = FileFormatConverter.GetFileNameAsPdf(fileName);
-            }
-            string PrintingCommand = String.Format(PRINTING_COMMAND_TEMPLATE, printerName, NameAsPdf);
-            ConfigManager manager = new ConfigManager(ConstFields.CONFIGRATION_FILE_NAME);
-
-            PrintingCommand += (" " + string.Join(" ", manager.GetEnabledPrintingOptions()));
-            _commandsList.Add(PrintingCommand);
-
-            string RemoveFileCommand = String.Format(REMOVE_COMMAND, fileName);
-            _commandsList.Add(RemoveFileCommand);
-
+            string commands = CreatePrintFileCommand(fileName, printerName);
             try
             {
                 using (var client = new SshClient(_address, _username, _password))
                 {
                     client.Connect();
-                    string commmand = string.Join("; ", _commandsList);
                     Console.WriteLine("Executing printing command, waiting for response...");
-                    SshCommand result = client.RunCommand(commmand);
-                    _commandsList.Clear();
-
+                    SshCommand result = client.RunCommand(commands);
                     string resultString = result.Result.Trim('\n', '\r', ' ');
                     Console.WriteLine("Response message is: " + resultString);
 
