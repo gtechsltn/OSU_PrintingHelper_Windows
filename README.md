@@ -1,5 +1,15 @@
 # OSU Printing Helper (Windows Platform)
 
+## NuGet
++ <package id="log4net" version="2.0.15" targetFramework="net48" />
++ <package id="SevenZipSharp.Net45" version="1.0.19" targetFramework="net48" />
++ <package id="SSH.NET" version="2020.0.2" targetFramework="net48" />
+
+## CSharp
++ using Renci.SshNet;
++ using Renci.SshNet.Common;
++ using Renci.SshNet.Sftp;
+
 ## Introduction
 This is a printing application for the Ohio State University.
 The intention of creating this application is to help CSE major student to 
