@@ -8,6 +8,7 @@
 ## Sample SftpClient
 + **NetworkHandler.cs**
 + https://csharp.hotexamples.com/examples/Renci.SshNet/SftpClient/UploadFile/php-sftpclient-uploadfile-method-examples.html
++ https://stackoverflow.com/questions/35567276/create-directory-in-local-machinelinux-by-using-sftp
 
 ## CSharp SftpClient
 + using Renci.SshNet;
