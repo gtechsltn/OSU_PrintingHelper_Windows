@@ -1,11 +1,15 @@
 # OSU Printing Helper (Windows Platform)
 
 ## NuGet
-+ <package id="log4net" version="2.0.15" targetFramework="net48" />
-+ <package id="SevenZipSharp.Net45" version="1.0.19" targetFramework="net48" />
-+ <package id="SSH.NET" version="2020.0.2" targetFramework="net48" />
++ package log4net version 2.0.15
++ SevenZipSharp.Net45 version 1.0.19
++ SSH.NET version 2020.0.2 (**SftpClient**)
 
-## CSharp
+## Sample SftpClient
++ **NetworkHandler.cs**
++ https://csharp.hotexamples.com/examples/Renci.SshNet/SftpClient/UploadFile/php-sftpclient-uploadfile-method-examples.html
+
+## CSharp SftpClient
 + using Renci.SshNet;
 + using Renci.SshNet.Common;
 + using Renci.SshNet.Sftp;
